@@ -1,8 +1,9 @@
-package io.pbhuyan.gradle.spring;
+package io.github.bhuyanp.gradle;
 
-import io.pbhuyan.gradle.spring.theme.Theme;
-import io.pbhuyan.gradle.spring.theme.ThemeFormat;
-import io.pbhuyan.gradle.spring.theme.ThemeProvider;
+
+import io.github.bhuyanp.gradle.theme.Theme;
+import io.github.bhuyanp.gradle.theme.ThemeBuilder;
+import io.github.bhuyanp.gradle.theme.ThemeProvider;
 import org.gradle.api.JavaVersion;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.ExtensionContainer;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface SpringBannerExtension extends ThemeProvider{
+public interface SpringBannerExtension extends ThemeProvider {
 
     String NAME = "springBanner";
 
@@ -24,11 +25,6 @@ public interface SpringBannerExtension extends ThemeProvider{
         extensions.create(NAME, SpringBannerExtension.class);
     }
 
-    /**
-     * Banner text
-     *
-     * @return Banner text
-     */
     Property<String> getText();
     default String getTextValue(Project project) {
         return getText().getOrElse(capitalizeProjectName(project.getName()));
@@ -45,9 +41,9 @@ public interface SpringBannerExtension extends ThemeProvider{
         return getTheme().getOrElse(Theme.DARK);
     }
 
-    Property<ThemeFormat> getBannerTheme();
-    default ThemeFormat getBannerThemeValues() {
-        return getCaptionTheme().getOrElse(getBannerTheme(getThemeValues()));
+    Property<ThemeBuilder> getBannerTheme();
+    default ThemeBuilder getBannerThemeValues() {
+        return getBannerTheme().getOrElse(getBannerTheme(getThemeValues()));
     }
 
 
@@ -55,22 +51,23 @@ public interface SpringBannerExtension extends ThemeProvider{
     default String getCaptionValue(Project project) {
         return getCaption().getOrElse("""
                 | Version: %s
-                | SpringBoot Version: ${spring-boot.version}
+                | SpringBoot Version: %s
                 | Java Version: %s
                 | Gradle Version: %s
-                """.formatted(project.getVersion(), JavaVersion.current(), ((DefaultGradleVersion) GradleVersion.current()).getVersion()));
+                """.formatted(project.getVersion(), SPRING_BOOT_VERSION, JavaVersion.current(), ((DefaultGradleVersion) GradleVersion.current()).getVersion()));
 
     }
 
-    Property<ThemeFormat> getCaptionTheme();
-    default ThemeFormat getCaptionThemeValues() {
+    Property<ThemeBuilder> getCaptionTheme();
+    default ThemeBuilder getCaptionThemeValues() {
         return getCaptionTheme().getOrElse(getCaptionTheme(getThemeValues()));
     }
 
+    String SPRING_BOOT_VERSION = "${spring-boot.version}";
 
-    ListProperty<String> getFonts();
-    default List<String> getFontsValue() {
-        return getFonts().get().isEmpty() ? DEFAULT_FONTS : getFonts().get();
+    ListProperty<String> getBannerFonts();
+    default List<String> getBannerFontsValue() {
+        return getBannerFonts().get().isEmpty() ? DEFAULT_FONTS : getBannerFonts().get();
     }
 
     List<String> DEFAULT_FONTS = List.of(

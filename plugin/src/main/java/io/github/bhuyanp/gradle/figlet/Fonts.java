@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.pbhuyan.gradle.spring.figlet;
+package io.github.bhuyanp.gradle.figlet;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -58,7 +58,7 @@ public final class Fonts {
             case "soft"->List.of(0,1,0,1);
             case "univers"->List.of(1,0,1,1);
             case "usaflag"->List.of(1,1,0,1);
-            case "whimsy"->List.of(0,3,1,3);
+            case "whimsy"->List.of(1,2,1,2);
             default -> List.of(1,1,1,1);
         };
     }

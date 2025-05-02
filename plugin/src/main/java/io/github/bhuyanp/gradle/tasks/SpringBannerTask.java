@@ -1,10 +1,11 @@
-package io.pbhuyan.gradle.spring.tasks;
+package io.github.bhuyanp.gradle.tasks;
 
-import com.diogonunes.jcolor.AnsiFormat;
-import io.pbhuyan.gradle.spring.SpringBannerExtension;
-import io.pbhuyan.gradle.spring.figlet.FigletBannerRenderer;
-import io.pbhuyan.gradle.spring.figlet.Fonts;
-import io.pbhuyan.gradle.spring.theme.ThemeFormat;
+
+import io.github.bhuyanp.gradle.SpringBannerExtension;
+import io.github.bhuyanp.gradle.figlet.FigletBannerRenderer;
+import io.github.bhuyanp.gradle.figlet.Fonts;
+import io.github.bhuyanp.gradle.theme.Theme;
+import io.github.bhuyanp.gradle.theme.ThemeBuilder;
 import org.gradle.api.Project;
 
 import java.util.List;
@@ -12,46 +13,53 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
+import static io.github.bhuyanp.gradle.SpringBannerExtension.SPRING_BOOT_VERSION;
+import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect;
 
 public interface SpringBannerTask {
     String GROUP = "Spring Banner Generator";
 
     default String getBanner(SpringBannerExtension extension, Project project, FigletBannerRenderer renderer) {
-        List<String> fontsValue = extension.getFontsValue();
+        List<String> bannerFonts = extension.getBannerFontsValue();
         String font = "usaflag";
-        if (fontsValue.size() > 1) {
-            font = fontsValue.get(new Random().nextInt(fontsValue.size()));
-        } else if(fontsValue.size() == 1) {
-            font = fontsValue.getFirst();
+        if (bannerFonts.size() > 1) {
+            font = bannerFonts.get(new Random().nextInt(bannerFonts.size()));
+        } else if (bannerFonts.size() == 1) {
+            font = bannerFonts.getFirst();
         }
+        System.out.println("Banner generated with font: " + font);
         return getBanner(extension, project, renderer, font);
     }
 
     default String getBanner(SpringBannerExtension extension, Project project, FigletBannerRenderer renderer, String font) {
         String text = extension.getTextValue(project);
         String caption = extension.getCaptionValue(project);
-        AnsiFormat bannerTheme = extension.getBannerThemeValues();
-        ThemeFormat captionTheme = extension.getCaptionThemeValues();
+        Theme theme = extension.getThemeValues();
+        ThemeBuilder bannerTheme = extension.getBannerThemeValues();
+        ThemeBuilder captionTheme = extension.getCaptionThemeValues();
 
-
-        System.out.println("Banner generated with font: " + font);
         String banner = renderer.render(font, text);
-        banner = addPadding(font, banner);
+        banner = addBannerPadding(font, banner);
         banner = applyBannerTheme(banner, bannerTheme);
 
+        caption = addCaptionPadding(caption);
         caption = applyCaptionTheme(caption, captionTheme);
 
+        if(theme==Theme.SURPRISE_ME){
+            System.out.println("Banner Theme: " + bannerTheme);
+            System.out.println("Caption Theme: " + captionTheme);
+        }
         String result = caption.isBlank()
                 ? banner
                 : banner + System.lineSeparator() + System.lineSeparator() + caption;
-        return System.lineSeparator() + result;
+        return System.lineSeparator() + result + System.lineSeparator();
     }
 
     String DEFAULT_SPACING = " ";
     String DEFAULT_HORIZONTAL_SPACING = DEFAULT_SPACING.repeat(2);
 
 
-    default String addPadding(String font, String banner) {
+    default String addBannerPadding(String font, String banner) {
         if (banner.isBlank()) return banner;
         List<Integer> fontPaddings = Fonts.getPadding(font);
         System.out.println("Font paddings: " + fontPaddings);
@@ -71,16 +79,26 @@ public interface SpringBannerTask {
         return banner;
     }
 
-    default String applyBannerTheme(String banner, AnsiFormat bannerTheme) {
+    default String applyBannerTheme(String banner, ThemeBuilder bannerTheme) {
         if (banner.isBlank()) return banner;
         return banner.lines()
                 .map(line -> colorize(line, bannerTheme))
                 .collect(Collectors.joining(System.lineSeparator()));
     }
 
-    default String applyCaptionTheme(String caption, ThemeFormat captionTheme) {
+    default String addCaptionPadding(String caption) {
         if (caption.isBlank()) return caption;
-        System.out.println(captionTheme.hasBackColor());
+        Integer biggestLine = caption.lines().map(String::length).max(Integer::compare).get();
+        return caption.lines()
+                .map(line ->
+                        line.contains(SPRING_BOOT_VERSION) ?
+                                line + DEFAULT_SPACING.repeat(biggestLine - SPRING_BOOT_VERSION.length() -5) + DEFAULT_SPACING :
+                                line + DEFAULT_SPACING.repeat(biggestLine - line.length()) + DEFAULT_SPACING)
+                .collect(Collectors.joining(System.lineSeparator()));
+    }
+
+    default String applyCaptionTheme(String caption, ThemeBuilder captionTheme) {
+        if (caption.isBlank()) return caption;
         return colorize(caption, captionTheme);
     }
 

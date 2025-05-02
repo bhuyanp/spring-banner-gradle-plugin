@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.pbhuyan.gradle.spring.figlet;
+package io.github.bhuyanp.gradle.figlet;
 
 import com.github.dtmo.jfiglet.FigFont;
 import com.github.dtmo.jfiglet.FigFontResources;

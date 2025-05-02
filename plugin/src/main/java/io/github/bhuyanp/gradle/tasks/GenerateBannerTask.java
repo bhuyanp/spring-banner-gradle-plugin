@@ -1,7 +1,8 @@
-package io.pbhuyan.gradle.spring.tasks;
+package io.github.bhuyanp.gradle.tasks;
 
-import io.pbhuyan.gradle.spring.SpringBannerExtension;
-import io.pbhuyan.gradle.spring.figlet.FigletBannerRenderer;
+
+import io.github.bhuyanp.gradle.SpringBannerExtension;
+import io.github.bhuyanp.gradle.figlet.FigletBannerRenderer;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.Task;

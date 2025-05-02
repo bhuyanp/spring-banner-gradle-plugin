@@ -1,15 +1,37 @@
 
 plugins {
     `java-gradle-plugin`
+    id("com.gradle.plugin-publish") version "1.3.1"
 }
 
 repositories {
     mavenCentral()
 }
+
+version = "1.0"
+group = "io.github.bhuyanp"
+
+
+gradlePlugin {
+    website.set("https://github.com/bhuyanp/GradlePlugins")
+    vcsUrl.set("https://github.com/bhuyanp/GradlePlugins")
+    plugins {
+        create("springBannerGenerator") {
+            id = "io.github.bhuyanp.spring-banner-generator"
+            implementationClass = "io.github.bhuyanp.gradle.SpringBannerGeneratorPlugin"
+            displayName = "Spring Banner Generator"
+            description = "Generates colorful banners for SpringBoot applications."
+            tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "gradle", "plugin", "banner"))
+        }
+    }
+}
+
+
 dependencies {
     implementation("com.diogonunes:JColor:5.5.1")
     implementation("com.github.dtmo.jfiglet:jfiglet:1.0.1")
 }
+
 testing {
     suites {
         // Configure the built-in test suite
@@ -34,15 +56,6 @@ testing {
         }
     }
 }
-
-gradlePlugin {
-    // Define the plugin
-    val springBanner by plugins.creating {
-        id = "io.pbhuyan.gradle.spring-banner-generator"
-        implementationClass = "io.pbhuyan.gradle.spring.SpringBannerGeneratorPlugin"
-    }
-}
-
 
 
 gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
