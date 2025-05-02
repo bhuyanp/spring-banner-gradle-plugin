@@ -1,31 +1,31 @@
 
 plugins {
     `java-gradle-plugin`
-    id("com.gradle.plugin-publish") version "1.3.1"
+    signing
+    id("com.gradleup.shadow") version "9.0.0-beta13"
+    id("com.gradle.plugin-publish").version("1.3.1")
 }
 
 repositories {
     mavenCentral()
 }
 
-version = "1.0"
-group = "io.github.bhuyanp"
-
+version = property("pluginVersion")!!
+group = property("pluginGroup")!!
 
 gradlePlugin {
-    website.set("https://github.com/bhuyanp/GradlePlugins")
-    vcsUrl.set("https://github.com/bhuyanp/GradlePlugins")
+    website.set("https://github.com/bhuyanp/spring-banner-generator")
+    vcsUrl.set("https://github.com/bhuyanp/spring-banner-generator")
     plugins {
         create("springBannerGenerator") {
             id = "io.github.bhuyanp.spring-banner-generator"
             implementationClass = "io.github.bhuyanp.gradle.SpringBannerGeneratorPlugin"
             displayName = "Spring Banner Generator"
             description = "Generates colorful banners for SpringBoot applications."
-            tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "gradle", "plugin", "banner"))
+            tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "banner"))
         }
     }
 }
-
 
 dependencies {
     implementation("com.diogonunes:JColor:5.5.1")
@@ -58,6 +58,58 @@ testing {
     }
 }
 
+
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifactId = "spring-banner-generator"
+            from(components["java"])
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = "Spring Banner Generator"
+                description = "Generates colorful banners for SpringBoot applications."
+                url = "https://github.com/bhuyanp/spring-banner-generator"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "bhuyanp"
+                        name = "Prasanta K Bhuyan"
+                        email = "prasanta.k.bhuyan@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/bhuyanp/spring-banner-generator.git"
+                    developerConnection = "scm:git:ssh://github.com/bhuyanp/spring-banner-generator.git"
+                    url = "https://github.com/bhuyanp/spring-banner-generator"
+                }
+            }
+        }
+    }
+}
+
+tasks.jar{
+    enabled = false
+}
+tasks.shadowJar {
+    archiveClassifier = ""
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
+}
 
 gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 
