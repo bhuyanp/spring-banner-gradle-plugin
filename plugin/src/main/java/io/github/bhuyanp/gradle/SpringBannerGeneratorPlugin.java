@@ -6,7 +6,6 @@ package io.github.bhuyanp.gradle;
 import io.github.bhuyanp.gradle.tasks.GenerateBannerTask;
 import io.github.bhuyanp.gradle.tasks.PrintAllBannersTask;
 import io.github.bhuyanp.gradle.tasks.PrintBannerTask;
-
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.jetbrains.annotations.NotNull;

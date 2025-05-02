@@ -29,17 +29,16 @@ Plugin comes with three tasks.
 
 ![img.png](img.png)
 
-### GenerateBannerTask [DEFAULT]
+```kotlin
+- GenerateBannerTask [DEFAULT]
+    Writes generated banner.txt to resources folder.
 
-Writes generated banner.txt to resources folder.
+- PrintBannerTask
+    Prints banner in the console as per current app's configuration
 
-### PrintBannerTask
-
-Prints banner in the console as per current app's configuration
-
-### PrintAllBannerTask
-
-Prints banners in the console using all the fonts available in the library
+- PrintAllBannerTask
+    Prints banners in the console using all the fonts available in the library
+```
 
 ## Customizations
 

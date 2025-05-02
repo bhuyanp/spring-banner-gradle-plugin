@@ -45,6 +45,7 @@ testing {
             dependencies {
                 // functionalTest test suite depends on the production code in tests
                 implementation(project())
+                implementation("org.assertj:assertj-core:3.26.0")
             }
 
             targets {

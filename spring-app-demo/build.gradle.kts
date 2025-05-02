@@ -1,21 +1,7 @@
-import com.diogonunes.jcolor.Attribute.BACK_COLOR
-import com.diogonunes.jcolor.Attribute.BLUE_TEXT
-import com.diogonunes.jcolor.Attribute.BOLD
-import com.diogonunes.jcolor.Attribute.BRIGHT_CYAN_TEXT
-import com.diogonunes.jcolor.Attribute.BRIGHT_MAGENTA_TEXT
-import com.diogonunes.jcolor.Attribute.BRIGHT_WHITE_TEXT
-import com.diogonunes.jcolor.Attribute.CYAN_BACK
-import com.diogonunes.jcolor.Attribute.CYAN_TEXT
-import com.diogonunes.jcolor.Attribute.MAGENTA_TEXT
-import com.diogonunes.jcolor.Attribute.WHITE_BACK
-import com.diogonunes.jcolor.Attribute.WHITE_TEXT
-import io.github.bhuyanp.gradle.theme.Theme
-import io.github.bhuyanp.gradle.theme.ThemeBuilder
-
 plugins {
     java
-    id("org.springframework.boot") version "3.4.5"
-    id("io.spring.dependency-management") version "1.1.7"
+    id("org.springframework.boot").version("3.4.5")
+    id("io.spring.dependency-management").version("1.1.7")
     id("io.github.bhuyanp.spring-banner-generator")
 }
 
@@ -29,7 +15,11 @@ java {
 }
 
 springBanner {
-    //text = "Funky Banner"
+
+    text = "Funky Banner"
+    bannerFonts = listOf("ansiregular")
+
+//    text = "Funky Banner"
 
 //    bannerFonts = listOf(
 //        "ansiregular",
@@ -46,10 +36,10 @@ springBanner {
 //        Caption text line 3
 //    """.trimIndent()
 
-    //theme = Theme.LIGHT
+//     theme = Theme.LIGHT
 
-    //bannerTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 45, 45))
-    //captionTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 35, 15),  BOLD())
+//      bannerTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 45, 45))
+//      captionTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 35, 15),  BOLD())
 }
 repositories {
     mavenCentral()

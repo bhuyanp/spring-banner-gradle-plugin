@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 import static io.github.bhuyanp.gradle.SpringBannerExtension.SPRING_BOOT_VERSION;
-import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect;
 
 public interface SpringBannerTask {
     String GROUP = "Spring Banner Generator";
@@ -27,7 +26,6 @@ public interface SpringBannerTask {
         } else if (bannerFonts.size() == 1) {
             font = bannerFonts.getFirst();
         }
-        System.out.println("Banner generated with font: " + font);
         return getBanner(extension, project, renderer, font);
     }
 
@@ -38,6 +36,7 @@ public interface SpringBannerTask {
         ThemeBuilder bannerTheme = extension.getBannerThemeValues();
         ThemeBuilder captionTheme = extension.getCaptionThemeValues();
 
+        System.out.println("Banner font: " + font);
         String banner = renderer.render(font, text);
         banner = addBannerPadding(font, banner);
         banner = applyBannerTheme(banner, bannerTheme);
@@ -45,7 +44,7 @@ public interface SpringBannerTask {
         caption = addCaptionPadding(caption);
         caption = applyCaptionTheme(caption, captionTheme);
 
-        if(theme==Theme.SURPRISE_ME){
+        if (theme == Theme.SURPRISE_ME) {
             System.out.println("Banner Theme: " + bannerTheme);
             System.out.println("Caption Theme: " + captionTheme);
         }
@@ -62,7 +61,7 @@ public interface SpringBannerTask {
     default String addBannerPadding(String font, String banner) {
         if (banner.isBlank()) return banner;
         List<Integer> fontPaddings = Fonts.getPadding(font);
-        System.out.println("Font paddings: " + fontPaddings);
+        System.out.println("Banner paddings: " + fontPaddings);
         banner = banner.lines()
                 .map(line -> DEFAULT_HORIZONTAL_SPACING.repeat(fontPaddings.getLast()) + line + DEFAULT_HORIZONTAL_SPACING.repeat(fontPaddings.get(1)))
                 .collect(Collectors.joining(System.lineSeparator()));
@@ -88,12 +87,13 @@ public interface SpringBannerTask {
 
     default String addCaptionPadding(String caption) {
         if (caption.isBlank()) return caption;
-        Integer biggestLine = caption.lines().map(String::length).max(Integer::compare).get();
+        int biggestLine = caption.lines().map(String::length).max(Integer::compare).get();
         return caption.lines()
                 .map(line ->
                         line.contains(SPRING_BOOT_VERSION) ?
-                                line + DEFAULT_SPACING.repeat(biggestLine - SPRING_BOOT_VERSION.length() -5) + DEFAULT_SPACING :
+                                line + DEFAULT_SPACING.repeat(biggestLine - SPRING_BOOT_VERSION.length() - 5) + DEFAULT_SPACING :
                                 line + DEFAULT_SPACING.repeat(biggestLine - line.length()) + DEFAULT_SPACING)
+                .map(line -> DEFAULT_SPACING + line)
                 .collect(Collectors.joining(System.lineSeparator()));
     }
 

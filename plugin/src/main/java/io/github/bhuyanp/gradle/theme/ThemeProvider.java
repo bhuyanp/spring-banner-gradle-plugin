@@ -1,7 +1,6 @@
 package io.github.bhuyanp.gradle.theme;
 
 import com.diogonunes.jcolor.Attribute;
-import org.apache.tools.ant.taskdefs.optional.windows.Attrib;
 
 import java.util.List;
 import java.util.Random;
