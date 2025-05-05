@@ -24,15 +24,16 @@ import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskContainer;
 
 import javax.inject.Inject;
+import java.util.LinkedHashSet;
 
-public class PrintBannerTask extends DefaultTask implements SpringBannerTask {
-    private static final String NAME = "printBanner";
+public class PrintDefaultBannersTask extends DefaultTask implements SpringBannerTask {
+    private static final String NAME = "printDefaultBanners";
 
     private final Project project;
     private final SpringBannerExtension extension;
 
     @Inject
-    public PrintBannerTask(Project project) {
+    public PrintDefaultBannersTask(Project project) {
         this.project = project;
         this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
         setGroup(GROUP);
@@ -40,13 +41,17 @@ public class PrintBannerTask extends DefaultTask implements SpringBannerTask {
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintBannerTask.class, project);
+        tasks.register(NAME, PrintDefaultBannersTask.class, project);
     }
 
     @TaskAction
     public void generate() {
-        String result = getBannerWCaption(extension, project);
-        System.out.println(result);
+        new LinkedHashSet<>(SpringBannerExtension.DEFAULT_FONTS).forEach(font ->
+                System.out.println(getBannerWCaption(extension, project, font)
+                        + System.lineSeparator()
+                        + "_".repeat(10)
+                        + System.lineSeparator()
+                )
+        );
     }
-
 }

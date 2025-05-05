@@ -6,6 +6,7 @@ package io.github.bhuyanp.gradle;
 import io.github.bhuyanp.gradle.tasks.GenerateBannerTask;
 import io.github.bhuyanp.gradle.tasks.PrintAllBannersTask;
 import io.github.bhuyanp.gradle.tasks.PrintBannerTask;
+import io.github.bhuyanp.gradle.tasks.PrintDefaultBannersTask;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.jetbrains.annotations.NotNull;
@@ -34,5 +35,6 @@ public class SpringBannerGeneratorPlugin implements Plugin<Project> {
         GenerateBannerTask.register(project);
         PrintBannerTask.register(project);
         PrintAllBannersTask.register(project);
+        PrintDefaultBannersTask.register(project);
     }
 }

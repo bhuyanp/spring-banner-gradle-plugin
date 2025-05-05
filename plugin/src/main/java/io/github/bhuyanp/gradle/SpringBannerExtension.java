@@ -1,9 +1,8 @@
 package io.github.bhuyanp.gradle;
 
 
-import io.github.bhuyanp.gradle.theme.Theme;
-import io.github.bhuyanp.gradle.theme.ThemeBuilder;
-import io.github.bhuyanp.gradle.theme.ThemeProvider;
+import io.github.bhuyanp.gradle.theme.ThemeConfig;
+import io.github.bhuyanp.gradle.theme.ThemePreset;
 import org.gradle.api.JavaVersion;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.ExtensionContainer;
@@ -16,8 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface SpringBannerExtension extends ThemeProvider {
+/**
+ * Extension for the plugin with various customization option
+ */
+public interface SpringBannerExtension {
 
+    /**
+     * Extension name
+     */
     String NAME = "springBanner";
 
     static void create(Project project) {
@@ -26,46 +31,64 @@ public interface SpringBannerExtension extends ThemeProvider {
     }
 
     Property<String> getText();
+
+    /**
+     *
+     * @param project
+     * @return Text provided in the extension otherwise the project name
+     */
     default String getTextValue(Project project) {
         return getText().getOrElse(capitalizeProjectName(project.getName()));
     }
 
+    /**
+     *
+     * @param projectName Name of the project
+     * @return The capitalized project name and dashes replaces with spaces
+     */
     default String capitalizeProjectName(String projectName) {
         return Arrays.stream(projectName.replace('-', ' ').split(" ")).map(name ->
                         name.substring(0, 1).toUpperCase() + name.substring(1))
                 .collect(Collectors.joining(" "));
     }
 
-    Property<Theme> getTheme();
-    default Theme getThemeValues() {
-        return getTheme().getOrElse(Theme.DARK);
+    Property<ThemePreset> getThemePreset();
+
+    default ThemePreset getThemePresetValue() {
+        return getThemePreset().getOrElse(ThemePreset.DARK);
     }
 
-    Property<ThemeBuilder> getBannerTheme();
-    default ThemeBuilder getBannerThemeValues() {
-        return getBannerTheme().getOrElse(getBannerTheme(getThemeValues()));
+    Property<ThemeConfig> getBannerTheme();
+
+    default ThemeConfig getBannerThemeValue() {
+        return getBannerTheme().getOrNull();
     }
 
 
     Property<String> getCaption();
-    default String getCaptionValue(Project project) {
-        return getCaption().getOrElse("""
-                | Version: %s
-                | SpringBoot Version: %s
-                | Java Version: %s
-                | Gradle Version: %s
-                """.formatted(project.getVersion(), SPRING_BOOT_VERSION, JavaVersion.current(), ((DefaultGradleVersion) GradleVersion.current()).getVersion()));
 
-    }
-
-    Property<ThemeBuilder> getCaptionTheme();
-    default ThemeBuilder getCaptionThemeValues() {
-        return getCaptionTheme().getOrElse(getCaptionTheme(getThemeValues()));
-    }
-
+    String DEFAULT_CAPTION = """
+                Version                 : %s
+                Spring Boot Version     : %s
+                JDK Version             : %s
+                Gradle Version          : %s
+                """;
     String SPRING_BOOT_VERSION = "${spring-boot.version}";
+    default String getCaptionValue(Project project) {
+        return getCaption().getOrElse(DEFAULT_CAPTION.formatted(project.getVersion(), SPRING_BOOT_VERSION,
+                JavaVersion.current(), GradleVersion.current().getVersion()));
+
+    }
+
+    Property<ThemeConfig> getCaptionTheme();
+
+    default ThemeConfig getCaptionThemeValue() {
+        return getCaptionTheme().getOrNull();
+    }
+
 
     ListProperty<String> getBannerFonts();
+
     default List<String> getBannerFontsValue() {
         return getBannerFonts().get().isEmpty() ? DEFAULT_FONTS : getBannerFonts().get();
     }
@@ -78,9 +101,11 @@ public interface SpringBannerExtension extends ThemeProvider {
             "banner3_d",
             "banner4",
             "bigmoneyne",
+            "block",
             "bolger",
             "calvins",
             "colossal",
+            "cyberlarge",
             "elite",
             "georgia11",
             "lean",
@@ -88,9 +113,12 @@ public interface SpringBannerExtension extends ThemeProvider {
             "lineblocks",
             "nancyj",
             "poison",
+            "starwars",
             "puffy",
             "soft",
             "standard",
+            "usaflag",
+            "usaflag",
             "usaflag",
             "whimsy");
 }

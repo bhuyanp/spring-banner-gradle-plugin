@@ -25,11 +25,16 @@ gradlePlugin {
             tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "banner"))
         }
     }
+
 }
 
 dependencies {
-    implementation("com.diogonunes:JColor:5.5.1")
     implementation("com.github.dtmo.jfiglet:jfiglet:1.0.1")
+    compileOnly("org.projectlombok:lombok:${property("lombokVersion")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombokVersion")}")
+    testImplementation("org.assertj:assertj-core:${property("assertJVersion")}")
+    testImplementation("org.mockito:mockito-core:${property("mockitoVersion")}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${property("mockitoVersion")}")
 }
 
 testing {
@@ -45,18 +50,19 @@ testing {
             dependencies {
                 // functionalTest test suite depends on the production code in tests
                 implementation(project())
-                implementation("org.assertj:assertj-core:3.26.0")
+                implementation("org.assertj:assertj-core:${property("assertJVersion")}")
             }
 
             targets {
                 all {
                     // This test suite should run after the built-in test suite has run its tests
-                    testTask.configure { shouldRunAfter(test) } 
+                    testTask.configure { shouldRunAfter(test) }
                 }
             }
         }
     }
 }
+gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 
 
 
@@ -100,9 +106,6 @@ publishing {
     }
 }
 
-tasks.jar{
-    enabled = false
-}
 tasks.shadowJar {
     archiveClassifier = ""
 }
@@ -111,9 +114,7 @@ signing {
     sign(publishing.publications["mavenJava"])
 }
 
-gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 
 tasks.named<Task>("check") {
-    // Include functionalTest as part of the check lifecycle
     dependsOn(testing.suites.named("functionalTest"))
 }

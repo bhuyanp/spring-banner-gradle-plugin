@@ -25,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SpringBannerGeneratorPluginFunctionalTest {
     final String PROJECT_NAME = "test-app";
+    final String PROJECT_VERSION = "1.0";
 
     @TempDir
     Path projectDir;
@@ -45,7 +46,7 @@ class SpringBannerGeneratorPluginFunctionalTest {
                     id("io.spring.dependency-management").version("1.1.7")
                     id("io.github.bhuyanp.spring-banner-generator")
                 }
-                version = "1.0"
+                version = "%s"
                 dependencies {
                     implementation("org.springframework.boot:spring-boot-starter")
                     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -55,7 +56,7 @@ class SpringBannerGeneratorPluginFunctionalTest {
                     text = "Funky Banner"
                     bannerFonts = listOf("ansiregular")
                 }
-                """);
+                """.formatted(PROJECT_VERSION));
     }
 
     void writeString(Path file, String text) {
@@ -87,20 +88,25 @@ class SpringBannerGeneratorPluginFunctionalTest {
 
     @Test
     void should_printBanner() {
+        //given
+        //when
         BuildResult result = gradleRunner()
                 .withArguments("printBanner")
                 .build();
+
+        //then
         assertThat(result.task(":printBanner"))
                 .as("task :printBanner")
                 .isNotNull()
                 .extracting(BuildTask::getOutcome)
                 .as("task outcome")
                 .isEqualTo(TaskOutcome.SUCCESS);
-        System.out.println(result.getOutput());
         assertThat(result.getOutput())
-                .contains("Banner font")
-                .contains("Banner padding")
-                .contains("Version: 1.0");
+                .contains("Banner Font")
+                .contains("Banner Padding")
+                .contains("Version")
+                .contains(PROJECT_VERSION)
+                .contains(SpringBannerExtension.SPRING_BOOT_VERSION);
 
     }
 
@@ -124,7 +130,9 @@ class SpringBannerGeneratorPluginFunctionalTest {
                 .as("build/resources/main/banner.txt")
                 .exists();
         assertThat(readFile(banner.toFile()))
-                .contains("Version: 1.0")
+                .contains("Version")
+                .contains(PROJECT_VERSION)
+                .contains(SpringBannerExtension.SPRING_BOOT_VERSION)
                 .contains("███████ ██    ██ ███    ██ ██   ██ ██    ██     ██████   █████  ███    ██ ███    ██ ███████ ██████");
 
     }

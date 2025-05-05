@@ -2,7 +2,6 @@ package io.github.bhuyanp.gradle.tasks;
 
 
 import io.github.bhuyanp.gradle.SpringBannerExtension;
-import io.github.bhuyanp.gradle.figlet.FigletBannerRenderer;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
@@ -26,8 +25,6 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
 
     private final Project project;
     private final SpringBannerExtension extension;
-    private final FigletBannerRenderer renderer = FigletBannerRenderer.SINGLETON;
-    ;
 
 
     @Inject
@@ -58,7 +55,7 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
                         .getResourcesDir(), "sourceSets.main.resourcesDir")
                 .toPath()
                 .resolve(FILENAME);
-        String result = getBanner(extension, project, renderer);
+        String result = getBannerWCaption(extension, project);
         try {
             Path dir = path.getParent();
             if (!Files.exists(dir)) {

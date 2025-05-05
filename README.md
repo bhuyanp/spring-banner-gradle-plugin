@@ -4,6 +4,7 @@ Spring Banner Generator gradle plugin is for SpringBoot applications and it gene
 for the best banner experience. All you have to do is include the plugin to your build file.
 
 #### Usage:
+
 ```kotlin
 plugins {
     ..
@@ -11,33 +12,61 @@ plugins {
     id("io.github.bhuyanp.spring-banner-generator")
 }
 ```
-#### Samples:
 
+#### Previews
+<details>
+<summary>Dark Theme Preview:</summary>
 <img src="./docs/images/dark1.png" alt="Dark Theme Banner 1" title="Dark Theme Banner 1" width="400"/>
-<img src="./docs/images/random6.png" alt="Random Theme Banner 6" title="Random Theme Banner 6" width="400"/>
+<img src="./docs/images/dark2.png" alt="Dark Theme Banner 2" title="Dark Theme Banner 2" width="400"/>
+<img src="./docs/images/dark3.png" alt="Dark Theme Banner 3" title="Dark Theme Banner 3" width="400"/>
+<img src="./docs/images/dark4.png" alt="Dark Theme Banner 4" title="Dark Theme Banner 4" width="400"/>
+</details>
+<details>
+<summary>Light Theme Preview:</summary>
+<img src="./docs/images/light1.png" alt="Light Theme Banner 1" title="Light Theme Banner 1" width="400"/>
 <img src="./docs/images/light2.png" alt="Light Theme Banner 2" title="Light Theme Banner 2" width="400"/>
-<img src="./docs/images/random4.png" alt="Random Theme Banner 4" title="Random Theme Banner 4" width="400"/>
+<img src="./docs/images/light3.png" alt="Light Theme Banner 3" title="Light Theme Banner 3" width="400"/>
+<img src="./docs/images/light4.png" alt="Light Theme Banner 4" title="Light Theme Banner 4" width="400"/>
+</details>
+
+<details>
+<summary>Surprise Me:</summary>
+<img src="./docs/images/surprise-me1.png" alt="Surprise Me Theme Banner 1" title="Surprise Me Theme Banner 1" width="400"/>
+<img src="./docs/images/surprise-me2.png" alt="Surprise Me Theme Banner 2" title="Surprise Me Theme Banner 2" width="400"/>
+<img src="./docs/images/surprise-me3.png" alt="Surprise Me Theme Banner 3" title="Surprise Me Theme Banner 3" width="400"/>
+<img src="./docs/images/surprise-me4.png" alt="Surprise Me Theme Banner 4" title="Surprise Me Theme Banner 4" width="400"/>
+<img src="./docs/images/surprise-me5.png" alt="Surprise Me Theme Banner 5" title="Surprise Me Theme Banner 5" width="400"/>
+<img src="./docs/images/surprise-me6.png" alt="Surprise Me Theme Banner 6" title="Surprise Me Theme Banner 6" width="400"/>
+<img src="./docs/images/surprise-me7.png" alt="Surprise Me Theme Banner 7" title="Surprise Me Theme Banner 7" width="400"/>
+<img src="./docs/images/surprise-me8.png" alt="Surprise Me Theme Banner 8" title="Surprise Me Theme Banner 8" width="400"/>
+<img src="./docs/images/surprise-me9.png" alt="Surprise Me Theme Banner 9" title="Surprise Me Theme Banner 9" width="400"/>
+<img src="./docs/images/surprise-me10.png" alt="Surprise Me Theme Banner 10" title="Surprise Me Theme Banner 10" width="400"/>
+</details>
 
 #### Credits:
+
 This plugin is inspired by [spring-banner-gradle-plugin](https://alexengrig.github.io/spring-banner-gradle-plugin/)
 
 Colorizer by [JColor](https://github.com/dialex/JColor?tab=readme-ov-file)
 
 ## Tasks
 
-Plugin comes with three tasks.
+Plugin comes with four tasks.
 
-![img.png](img.png)
+<img src="./docs/images/tasks.png" alt="Tasks" title="Tasks" width="600"/>
 
 ```kotlin
-- GenerateBannerTask [DEFAULT]
-    Writes generated banner.txt to resources folder.
+- GenerateBanner [DEFAULT]
+    Writes generated banner.txt to the application resources folder.
 
-- PrintBannerTask
-    Prints banner in the console as per current app's configuration
+- PrintBanner
+    Prints banner in the console as per current app's configuration.
 
-- PrintAllBannerTask
-    Prints banners in the console using all the fonts available in the library
+- PrintAllBanners
+    Prints banners in the console using all the fonts available in the library.ππ
+
+- PrintDefaultBanner
+    Prints banners in the console using all the default fonts plugin cycles through.
 ```
 
 ## Customizations
@@ -57,7 +86,7 @@ springBanner {
 
 ### Banner Fonts
 
-You can provide one more banners fonts to the plugin. For more than one fonts, plugin will randomly pick font everytime it is invoked.
+You can provide one or more banners fonts to the plugin. For more than one fonts, plugin will randomly pick font everytime it is invoked.
 If no fonts are provided then plugin randomly cycles through a chosen list of fonts. DEFAULT_FONTS can be found here. [SpringBannerExtension](plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerExtension.java)
 
 ```gradle
@@ -76,15 +105,19 @@ springBanner {
 ### Caption
 
 Caption appears below the banner and this section can be be used to display useful information about the application. Plugin provides default caption with several useful
-info about the application. Check the screenshots for default caption. Custom captions can be provided as shown below.
+info about the application. Check the screenshots for default caption. Custom captions can be provided as shown below. For no caption, pass an empty string.
 
 ```gradle
 springBanner {
+// for custom caption
     caption = """
         Caption text line 1
         Caption text line 2
         Caption text line 3
     """.trimIndent()
+    
+// for no caption
+caption = ""
 }
 ```
 
@@ -94,58 +127,30 @@ Spring banner generator comes with two global themes, DARK and LIGHT. DARK is de
 
 ```gradle
 springBanner {
-    theme = Theme.LIGHT
+   // Dark is default. No need to provide.
+   themePreset = ThemePreset.DARK / ThemePreset.LIGHT / ThemePreset.SURPRISE_ME
 }
 ```
-Find the easter egg and you will have a lot of fun.
-
-#### Dark Theme [Default]:
-
-<details>
-<summary>Examples</summary>
-<img src="./docs/images/dark1.png" alt="Dark Theme Banner 1" title="Dark Theme Banner 1" width="400"/>
-<img src="./docs/images/dark2.png" alt="Dark Theme Banner 2" title="Dark Theme Banner 2" width="400"/>
-<img src="./docs/images/dark3.png" alt="Dark Theme Banner 3" title="Dark Theme Banner 3" width="400"/>
-<img src="./docs/images/dark4.png" alt="Dark Theme Banner 4" title="Dark Theme Banner 4" width="400"/>
-
-</details>
-
-#### Light Theme:
-
-<details>
-<summary>Examples</summary>
-<img src="./docs/images/light1.png" alt="Light Theme Banner 1" title="Light Theme Banner 1" width="400"/>
-<img src="./docs/images/light2.png" alt="Light Theme Banner 2" title="Light Theme Banner 2" width="400"/>
-<img src="./docs/images/light3.png" alt="Light Theme Banner 3" title="Light Theme Banner 3" width="400"/>
-<img src="./docs/images/light4.png" alt="Light Theme Banner 4" title="Light Theme Banner 4" width="400"/>
-</details>
 
 ### Banner and Caption Theme Customization
 
-Default theme of banner and caption derived from the global theme can be overridden. You can customize them to
+Default theme of banner and caption derived from the Theme Preset can be overridden. You can customize them to
 your heart's content.
 
 ```gradle
 springBanner {
-    bannerTheme = ThemeBuilder(BRIGHT_WHITE_TEXT(), BACK_COLOR(70, 45, 95), BOLD())
-    captionTheme = ThemeBuilder(CYAN_TEXT(),BOLD())
+    bannerTheme = ThemeConfig(BRIGHT_WHITE_TEXT(), BACK_COLOR(70, 45, 95), BOLD())
+    captionTheme = ThemeConfig(CYAN_TEXT(), NONE(), ITALIC())
 }
 ```
+Recommended order to provide the theme config is TEXT COLOR, BACKGROUND COLOR, EFFECT.
 
-Refer [Attribute](https://github.com/dialex/JColor/blob/main/src/main/java/com/diogonunes/jcolor/Attribute.java) for more color and formatting options.
-You can pass the attributes in any order. Avoid using back color for caption theme.
+
+Refer [Attribute.java](plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Attribute.java) for more color and formatting options.
+You can pass the attributes in any order. Plugin prints the theme config used when set to SURPRISE_ME Theme Preset into the build log. If you like the randomly generated
+banner, you may copy the banner and caption theme to your build file for future use. 
 
 #### Customized Theme:
-
-<details>
-<summary>Examples</summary>
-<img src="./docs/images/random1.png" alt="Random Theme Banner 1" title="Random Theme Banner 1" width="400"/>
-<img src="./docs/images/random2.png" alt="Random Theme Banner 2" title="Random Theme Banner 2" width="400"/>
-<img src="./docs/images/random3.png" alt="Random Theme Banner 3" title="Random Theme Banner 3" width="400"/>
-<img src="./docs/images/random4.png" alt="Random Theme Banner 4" title="Random Theme Banner 4" width="400"/>
-<img src="./docs/images/random5.png" alt="Random Theme Banner 5" title="Random Theme Banner 5" width="400"/>
-<img src="./docs/images/random6.png" alt="Random Theme Banner 6" title="Random Theme Banner 6" width="400"/>
-</details>
 
 ## License
 

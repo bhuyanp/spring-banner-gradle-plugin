@@ -18,7 +18,6 @@ package io.github.bhuyanp.gradle.tasks;
 
 
 import io.github.bhuyanp.gradle.SpringBannerExtension;
-import io.github.bhuyanp.gradle.figlet.FigletBannerRenderer;
 import io.github.bhuyanp.gradle.figlet.Fonts;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
@@ -32,7 +31,6 @@ public class PrintAllBannersTask extends DefaultTask implements SpringBannerTask
 
     private final Project project;
     private final SpringBannerExtension extension;
-    private final FigletBannerRenderer renderer = FigletBannerRenderer.SINGLETON;
 
     @Inject
     public PrintAllBannersTask(Project project) {
@@ -49,7 +47,7 @@ public class PrintAllBannersTask extends DefaultTask implements SpringBannerTask
     @TaskAction
     public void generate() {
         Fonts.all().forEach(font ->
-                System.out.println(getBanner(extension, project, renderer, font)
+                System.out.println(getBannerWCaption(extension, project, font)
                         + System.lineSeparator()
                         + "_".repeat(10)
                         + System.lineSeparator()

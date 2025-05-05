@@ -1,3 +1,23 @@
+import io.github.bhuyanp.gradle.ansi.Attribute.BACK_COLOR
+import io.github.bhuyanp.gradle.ansi.Attribute.BLACK_BACK
+import io.github.bhuyanp.gradle.ansi.Attribute.BOLD
+import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_BLACK_BACK
+import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_BLUE_TEXT
+import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_CYAN_TEXT
+import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_WHITE_TEXT
+import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_YELLOW_TEXT
+import io.github.bhuyanp.gradle.ansi.Attribute.CYAN_TEXT
+import io.github.bhuyanp.gradle.ansi.Attribute.DESATURATED
+import io.github.bhuyanp.gradle.ansi.Attribute.DIM
+import io.github.bhuyanp.gradle.ansi.Attribute.GREEN_BACK
+import io.github.bhuyanp.gradle.ansi.Attribute.ITALIC
+import io.github.bhuyanp.gradle.ansi.Attribute.MAGENTA_BACK
+import io.github.bhuyanp.gradle.ansi.Attribute.NONE
+import io.github.bhuyanp.gradle.ansi.Attribute.RED_BACK
+import io.github.bhuyanp.gradle.ansi.Attribute.TEXT_COLOR
+import io.github.bhuyanp.gradle.theme.ThemeConfig
+import io.github.bhuyanp.gradle.theme.ThemePreset
+
 plugins {
     java
     id("org.springframework.boot").version("3.4.5")
@@ -15,12 +35,8 @@ java {
 }
 
 springBanner {
-
-    text = "Funky Banner"
-    bannerFonts = listOf("ansiregular")
-
 //    text = "Funky Banner"
-
+//    bannerFonts = listOf("dotmatrix");
 //    bannerFonts = listOf(
 //        "ansiregular",
 //        "ansishadow",
@@ -29,17 +45,13 @@ springBanner {
 //        "bigmoneyne",
 //        "bolger"
 //    )
-
 //    caption = """
-//        Caption text line 1
-//        Caption text line 2
-//        Caption text line 3
 //    """.trimIndent()
 
-//     theme = Theme.LIGHT
+//    themePreset = ThemePreset.SURPRISE_ME
 
-//      bannerTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 45, 45))
-//      captionTheme = ThemeBuilder(BRIGHT_CYAN_TEXT(), BACK_COLOR(45, 35, 15),  BOLD())
+//    bannerTheme = ThemeConfig(BRIGHT_CYAN_TEXT(), NONE(), DESATURATED())
+//    captionTheme = ThemeConfig(TEXT_COLOR(231, 247, 225), NONE(), NONE())
 }
 repositories {
     mavenCentral()

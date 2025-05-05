@@ -1,12 +1,468 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3af1dbfc-f62e-46f0-9dbc-77763297dfbe" name="Changes" comment="Added publishing task">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/-1858019615/spring-banner-generator.plugin.functionalTest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/plugin/spring-banner-generator.plugin.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/surprise-me9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Ansi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/AnsiFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Attribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/BackColorAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/ColorAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/SimpleAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/TextColorAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/PrintDefaultBannersTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/TextPadding.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/ThemePreset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/ThemeConfigTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/dark1.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/dark1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/dark2.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/dark2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/dark3.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/dark3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/dark4.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/dark4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/light1.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/light1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/light2.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/light2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/light3.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/light3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/light4.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/light4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/random6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/images/tasks.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/images/tasks.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/functionalTest/java/io/github/bhuyanp/gradle/SpringBannerGeneratorPluginFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/functionalTest/java/io/github/bhuyanp/gradle/SpringBannerGeneratorPluginFunctionalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerGeneratorPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerGeneratorPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/figlet/Fonts.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/figlet/Fonts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/GenerateBannerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/GenerateBannerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/PrintAllBannersTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/PrintAllBannersTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/PrintBannerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/PrintBannerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/Theme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/ThemeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/ThemeConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/theme/ThemeProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-app-demo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/spring-app-demo/build.gradle.kts" afterDir="false" />
+    </list>
+    <list id="08dffa53-91e6-4b8b-b641-307319c1e4e3" name="DONT COMMIT" comment="DONT COMMIT" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-app-demo">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-app-demo">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/plugin">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-app-demo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-app-demo" type="f1a62948:ProjectNode" />
+                <item name="spring-app-demo" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-app-demo" type="f1a62948:ProjectNode" />
+                <item name="spring-app-demo" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-app-demo" type="f1a62948:ProjectNode" />
+                <item name="spring-app-demo" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-app-demo" type="f1a62948:ProjectNode" />
+                <item name="spring-app-demo" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="spring banner" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="plugin development" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="plugin portal" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;bhuyanp&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bhuyanp/spring-banner-generator.git&quot;,
+    &quot;accountId&quot;: &quot;087bfa7d-e3d4-428e-b9a9-b36f6d491efd&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/2421e902077e3845c8e93867d3e1ff4e94f7bcc5/JColor-5.5.1.jar!/META-INF/MANIFEST.MF" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/Ansi.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/AnsiFormat.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/Attribute.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/BackColorAttribute.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/ColorAttribute.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogonunes/JColor/5.5.1/5a7db259f318cf75c6370f63ea3d8f00c459f2d6/JColor-5.5.1-sources.jar!/com/diogonunes/jcolor/SimpleAttribute.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/21.0.4-amzn/lib/src.zip!/java.base/java/io/RandomAccessFile.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/21.0.4-amzn/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/21.0.4-amzn/lib/src.zip!/java.base/java/lang/System.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.sdkman/candidates/java/21.0.4-amzn/lib/src.zip!/java.base/java/util/SortedSet.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2wX9J6rtEy7ntqGrVqtvMu7mFha" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.SpringBannerGeneratorPluginFunctionalTest.should_generateBanner.executor": "Run",
+    "Gradle.SpringBannerGeneratorPluginFunctionalTest.should_printBanner.executor": "Run",
+    "Gradle.TextPaddingTest.executor": "Run",
+    "Gradle.TextPaddingTest.shouldNot_applyPadding.executor": "Run",
+    "Gradle.TextPaddingTest.shouldNot_applyPaddingWithBlankSubject.executor": "Run",
+    "Gradle.TextPaddingTest.should_applyAllPadding.executor": "Run",
+    "Gradle.TextPaddingTest.should_applyBottomPadding.executor": "Run",
+    "Gradle.TextPaddingTest.should_applyTopPadding.executor": "Run",
+    "Gradle.ThemeConfigTest.executor": "Run",
+    "Gradle.ThemeConfigTest.should_returnToString.executor": "Run",
+    "Gradle.plugin [build].executor": "Run",
+    "Gradle.spring-app-demo [:io.pbhuyan.gradle.demo.SpringBannerGeneratorDemoApplication.main()].executor": "Run",
+    "Gradle.spring-app-demo [:plugin:assemble].executor": "Run",
+    "Gradle.spring-app-demo [:plugin:buildNeeded].executor": "Run",
+    "Gradle.spring-app-demo [:plugin:build].executor": "Run",
+    "Gradle.spring-app-demo [:plugin:generateMetadataFileForMavenJavaPublication].executor": "Run",
+    "Gradle.spring-app-demo [:plugin:io.github.bhuyanp.gradle.theme.Theme.main()].executor": "Run",
+    "Gradle.spring-app-demo [bootRun].executor": "Run",
+    "Gradle.spring-app-demo [build].executor": "Run",
+    "Gradle.spring-app-demo [clean].executor": "Run",
+    "Gradle.spring-app-demo [printAllBanners].executor": "Run",
+    "Gradle.spring-app-demo [printBanner].executor": "Run",
+    "Gradle.spring-app-demo [printDefaultBanners].executor": "Run",
+    "Gradle.spring-app-demo [tasks].executor": "Run",
+    "Gradle.spring-banner-generator [build].executor": "Run",
+    "Gradle.spring-banner-generator [clean].executor": "Run",
+    "Gradle.spring-banner-generator [functionalTest].executor": "Run",
+    "Gradle.spring-banner-generator [jar].executor": "Run",
+    "Gradle.spring-banner-generator [login].executor": "Run",
+    "Gradle.spring-banner-generator [pluginDescriptors].executor": "Run",
+    "Gradle.spring-banner-generator [publishMavenJavaPublicationToMavenLocal].executor": "Run",
+    "Gradle.spring-banner-generator [publishPluginMavenPublicationToMavenLocal].executor": "Run",
+    "Gradle.spring-banner-generator [publishToMavenLocal].executor": "Run",
+    "Gradle.spring-banner-generator [shadowJar].executor": "Run",
+    "Gradle.spring-banner-generator [validatePlugins].executor": "Run",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/test/java/io/github/bhuyanp/gradle/theme",
+    "last_opened_file_path": "/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/main/java/io/github/bhuyanp/gradle/ansi",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="io.github.bhuyanp.gradle.theme" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="io.github.bhuyanp.gradle.tasks" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle tasks" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.spring-banner-generator [publishPlugins]">
+    <configuration name="ThemeConfigTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-app-demo" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":plugin:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.bhuyanp.gradle.theme.ThemeConfigTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThemeConfigTest.should_returnToString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-app-demo" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":plugin:test" />
+            <option value="--tests" />
+            <option value="&quot;io.github.bhuyanp.gradle.theme.ThemeConfigTest.should_returnToString&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-banner-generator [login]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="login" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-banner-generator [pluginDescriptors]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="pluginDescriptors" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-banner-generator [publishPlugins]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishPlugins" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="aws.lambda" factoryName="Remote">
+      <option name="credentialProviderId" />
+      <option name="regionId" />
+      <option name="functionName" />
+      <option name="input" />
+      <option name="inputIsFile" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.spring-banner-generator [publishPlugins]" />
+        <item itemvalue="Gradle.ThemeConfigTest" />
+        <item itemvalue="Gradle.ThemeConfigTest.should_returnToString" />
+        <item itemvalue="Gradle.spring-banner-generator [login]" />
+        <item itemvalue="Gradle.spring-banner-generator [pluginDescriptors]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3af1dbfc-f62e-46f0-9dbc-77763297dfbe" name="Changes" comment="Added publishing task" />
+      <created>1746267739755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746267739755</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi/ColorAttribute.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
