@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3af1dbfc-f62e-46f0-9dbc-77763297dfbe" name="Changes" comment="Added publishing task">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3af1dbfc-f62e-46f0-9dbc-77763297dfbe" name="Changes" comment="Added support for java 17">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/tasks/SpringBannerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin/src/test/java/io/github/bhuyanp/gradle/theme/TextPaddingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-app-demo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/spring-app-demo/build.gradle.kts" afterDir="false" />
     </list>
     <list id="08dffa53-91e6-4b8b-b641-307319c1e4e3" name="DONT COMMIT" comment="DONT COMMIT" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +78,7 @@
                 <item name="spring-banner-generator" type="f1a62948:ProjectNode" />
                 <item name="plugin" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="plugin portal" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -152,56 +145,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.SpringBannerGeneratorPluginFunctionalTest.should_generateBanner.executor": "Run",
-    "Gradle.SpringBannerGeneratorPluginFunctionalTest.should_printBanner.executor": "Run",
-    "Gradle.TextPaddingTest.executor": "Run",
-    "Gradle.TextPaddingTest.shouldNot_applyPadding.executor": "Run",
-    "Gradle.TextPaddingTest.shouldNot_applyPaddingWithBlankSubject.executor": "Run",
-    "Gradle.TextPaddingTest.should_applyAllPadding.executor": "Run",
-    "Gradle.TextPaddingTest.should_applyBottomPadding.executor": "Run",
-    "Gradle.TextPaddingTest.should_applyTopPadding.executor": "Run",
-    "Gradle.ThemeConfigTest.executor": "Run",
-    "Gradle.ThemeConfigTest.should_returnToString.executor": "Run",
-    "Gradle.plugin [build].executor": "Run",
-    "Gradle.plugin [functionalTest].executor": "Run",
-    "Gradle.spring-app-demo [:io.pbhuyan.gradle.demo.SpringBannerGeneratorDemoApplication.main()].executor": "Run",
-    "Gradle.spring-app-demo [:plugin:assemble].executor": "Run",
-    "Gradle.spring-app-demo [:plugin:buildNeeded].executor": "Run",
-    "Gradle.spring-app-demo [:plugin:build].executor": "Run",
-    "Gradle.spring-app-demo [:plugin:generateMetadataFileForMavenJavaPublication].executor": "Run",
-    "Gradle.spring-app-demo [:plugin:io.github.bhuyanp.gradle.theme.Theme.main()].executor": "Run",
-    "Gradle.spring-app-demo [bootRun].executor": "Run",
-    "Gradle.spring-app-demo [build].executor": "Run",
-    "Gradle.spring-app-demo [clean].executor": "Run",
-    "Gradle.spring-app-demo [printAllBanners].executor": "Run",
-    "Gradle.spring-app-demo [printBanner].executor": "Run",
-    "Gradle.spring-app-demo [printDefaultBanners].executor": "Run",
-    "Gradle.spring-app-demo [tasks].executor": "Run",
-    "Gradle.spring-banner-generator [build].executor": "Run",
-    "Gradle.spring-banner-generator [clean].executor": "Run",
-    "Gradle.spring-banner-generator [functionalTest].executor": "Run",
-    "Gradle.spring-banner-generator [jar].executor": "Run",
-    "Gradle.spring-banner-generator [login].executor": "Run",
-    "Gradle.spring-banner-generator [pluginDescriptors].executor": "Run",
-    "Gradle.spring-banner-generator [publishMavenJavaPublicationToMavenLocal].executor": "Run",
-    "Gradle.spring-banner-generator [publishPluginMavenPublicationToMavenLocal].executor": "Run",
-    "Gradle.spring-banner-generator [publishToMavenLocal].executor": "Run",
-    "Gradle.spring-banner-generator [shadowJar].executor": "Run",
-    "Gradle.spring-banner-generator [validatePlugins].executor": "Run",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "last_directory_selection": "/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/test/java/io/github/bhuyanp/gradle/theme",
-    "last_opened_file_path": "/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/main/java/io/github/bhuyanp/gradle/ansi",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.32413793",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.SpringBannerGeneratorPluginFunctionalTest.should_generateBanner.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringBannerGeneratorPluginFunctionalTest.should_printBanner.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.shouldNot_applyPadding.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.shouldNot_applyPaddingWithBlankSubject.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.should_applyAllPadding.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.should_applyBottomPadding.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TextPaddingTest.should_applyTopPadding.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThemeConfigTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ThemeConfigTest.should_returnToString.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.plugin [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.plugin [functionalTest].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.plugin [publishPlugins].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:io.pbhuyan.gradle.demo.SpringBannerGeneratorDemoApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:plugin:assemble].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:plugin:buildNeeded].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:plugin:build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:plugin:generateMetadataFileForMavenJavaPublication].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [:plugin:io.github.bhuyanp.gradle.theme.Theme.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [bootRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [printAllBanners].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [printBanner].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [printDefaultBanners].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-app-demo [tasks].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [functionalTest].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [login].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [pluginDescriptors].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [publishMavenJavaPublicationToMavenLocal].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [publishPluginMavenPublicationToMavenLocal].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [shadowJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.spring-banner-generator [validatePlugins].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/test/java/io/github/bhuyanp/gradle/theme&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/prasantabhuyan/Documents/CODE/gradle/spring-banner-generator/plugin/src/main/java/io/github/bhuyanp/gradle/ansi&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.32413793&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/plugin/src/main/java/io/github/bhuyanp/gradle/ansi" />
@@ -221,31 +215,7 @@
       <command value="gradle tasks" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.spring-app-demo [bootRun]">
-    <configuration name="ThemeConfigTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-app-demo" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":plugin:test" />
-            <option value="--tests" />
-            <option value="&quot;io.github.bhuyanp.gradle.theme.ThemeConfigTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.plugin [publishPlugins]">
     <configuration name="plugin [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -280,6 +250,28 @@
         <option name="taskNames">
           <list>
             <option value="functionalTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="plugin [publishPlugins]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/plugin" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishPlugins" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -346,19 +338,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.ThemeConfigTest" />
       <item itemvalue="Gradle.plugin [build]" />
       <item itemvalue="Gradle.plugin [functionalTest]" />
+      <item itemvalue="Gradle.plugin [publishPlugins]" />
       <item itemvalue="Gradle.spring-app-demo [bootRun]" />
       <item itemvalue="Gradle.spring-banner-generator [publishPlugins]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.spring-app-demo [bootRun]" />
+        <item itemvalue="Gradle.plugin [publishPlugins]" />
         <item itemvalue="Gradle.plugin [functionalTest]" />
+        <item itemvalue="Gradle.spring-app-demo [bootRun]" />
         <item itemvalue="Gradle.plugin [build]" />
         <item itemvalue="Gradle.spring-banner-generator [publishPlugins]" />
-        <item itemvalue="Gradle.ThemeConfigTest" />
       </list>
     </recent_temporary>
   </component>
@@ -370,6 +362,15 @@
       <option name="presentableId" value="Default" />
       <updated>1746267739755</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added support for java 17">
+      <option name="closed" value="true" />
+      <created>1746549322564</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746549322564</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -382,6 +383,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added support for java 17" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support for java 17" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
