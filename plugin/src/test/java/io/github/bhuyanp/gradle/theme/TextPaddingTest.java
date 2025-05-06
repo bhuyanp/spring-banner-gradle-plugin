@@ -40,8 +40,8 @@ class TextPaddingTest {
         String paddedText = textPadding.apply(subject);
         List<String> paddedTextLines = paddedText.lines().toList();
         //then
-        assertThat(paddedTextLines.getFirst()).isBlank().isEqualTo("    ");
-        assertThat(paddedTextLines.getLast()).isNotBlank().isEqualTo(subject);
+        assertThat(paddedTextLines.get(0)).isBlank().isEqualTo("    ");
+        assertThat(paddedTextLines.get(1)).isNotBlank().isEqualTo(subject);
     }
 
     @Test
@@ -53,9 +53,9 @@ class TextPaddingTest {
         String paddedText = textPadding.apply(subject);
         List<String> paddedTextLines = paddedText.lines().toList();
         //then
-        assertThat(paddedTextLines.getFirst()).isNotBlank().isEqualTo(subject);
+        assertThat(paddedTextLines.get(0)).isNotBlank().isEqualTo(subject);
         assertThat(paddedTextLines.get(1)).isBlank().isEqualTo("    ");
-        assertThat(paddedTextLines.getLast()).isBlank().isEqualTo("    ");
+        assertThat(paddedTextLines.get(2)).isBlank().isEqualTo("    ");
     }
 
     @Test
@@ -91,9 +91,9 @@ class TextPaddingTest {
 
         //then
         assertThat(paddedText).hasLineCount(4);
-        assertThat(paddedTextLines.getFirst()).isBlank().isEqualTo("         ");
+        assertThat(paddedTextLines.get(0)).isBlank().isEqualTo("         ");
         assertThat(paddedTextLines.get(1)).isBlank().isEqualTo("         ");
         assertThat(paddedTextLines.get(2)).isNotBlank().isEqualTo("  Text   ");
-        assertThat(paddedTextLines.getLast()).isBlank().isEqualTo("         ");
+        assertThat(paddedTextLines.get(3)).isBlank().isEqualTo("         ");
     }
 }

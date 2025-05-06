@@ -1,26 +1,6 @@
-import io.github.bhuyanp.gradle.ansi.Attribute.BACK_COLOR
-import io.github.bhuyanp.gradle.ansi.Attribute.BLACK_BACK
-import io.github.bhuyanp.gradle.ansi.Attribute.BOLD
-import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_BLACK_BACK
-import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_BLUE_TEXT
-import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_CYAN_TEXT
-import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_WHITE_TEXT
-import io.github.bhuyanp.gradle.ansi.Attribute.BRIGHT_YELLOW_TEXT
-import io.github.bhuyanp.gradle.ansi.Attribute.CYAN_TEXT
-import io.github.bhuyanp.gradle.ansi.Attribute.DESATURATED
-import io.github.bhuyanp.gradle.ansi.Attribute.DIM
-import io.github.bhuyanp.gradle.ansi.Attribute.GREEN_BACK
-import io.github.bhuyanp.gradle.ansi.Attribute.ITALIC
-import io.github.bhuyanp.gradle.ansi.Attribute.MAGENTA_BACK
-import io.github.bhuyanp.gradle.ansi.Attribute.NONE
-import io.github.bhuyanp.gradle.ansi.Attribute.RED_BACK
-import io.github.bhuyanp.gradle.ansi.Attribute.TEXT_COLOR
-import io.github.bhuyanp.gradle.theme.ThemeConfig
-import io.github.bhuyanp.gradle.theme.ThemePreset
-
 plugins {
     java
-    id("org.springframework.boot").version("3.4.5")
+    id("org.springframework.boot").version("3.0.0")
     id("io.spring.dependency-management").version("1.1.7")
     id("io.github.bhuyanp.spring-banner-generator")
 }
@@ -30,7 +10,7 @@ version = "1.0"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 

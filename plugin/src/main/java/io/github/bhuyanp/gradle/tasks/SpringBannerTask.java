@@ -2,7 +2,6 @@ package io.github.bhuyanp.gradle.tasks;
 
 
 import io.github.bhuyanp.gradle.SpringBannerExtension;
-import io.github.bhuyanp.gradle.ansi.Attribute;
 import io.github.bhuyanp.gradle.figlet.FigletBannerRenderer;
 import io.github.bhuyanp.gradle.theme.TextPadding;
 import io.github.bhuyanp.gradle.theme.Theme;
@@ -26,7 +25,7 @@ public interface SpringBannerTask {
         if (bannerFonts.size() > 1) {
             bannerFont = bannerFonts.get(new Random().nextInt(bannerFonts.size()));
         } else if (bannerFonts.size() == 1) {
-            bannerFont = bannerFonts.getFirst();
+            bannerFont = bannerFonts.get(0);
         }
         return getBannerWCaption(extension, project, bannerFont);
     }
