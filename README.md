@@ -13,7 +13,7 @@ SpringBoot: 3.x.x
 plugins {
     ..
     ..
-    id("io.github.bhuyanp.spring-banner-generator").version("1.4")
+    id("io.github.bhuyanp.spring-banner-generator").version("1.3")
 }
 ```
 
@@ -131,7 +131,7 @@ Spring banner generator comes with two global themes, DARK and LIGHT. DARK is de
 
 ```gradle
 springBanner {
-   // Dark is default. No need to provide.
+   // Dark is default when no themePreset is provided
    themePreset = ThemePreset.DARK / ThemePreset.LIGHT / ThemePreset.SURPRISE_ME
 }
 ```
@@ -154,7 +154,9 @@ Refer [Attribute.java](plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Attrib
 You can pass the attributes in any order. Plugin prints the theme config used when set to SURPRISE_ME Theme Preset into the build log. If you like the randomly generated
 banner, you may copy the banner and caption theme to your build file for future use. 
 
-#### Customized Theme:
+## Maven Plugin
+
+Maven plugin with simillar functionality located at https://github.com/bhuyanp/spring-banner-maven-plugin
 
 ## License
 
