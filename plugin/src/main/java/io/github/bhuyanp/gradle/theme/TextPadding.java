@@ -25,15 +25,14 @@ public class TextPadding {
                     .map(line -> DEFAULT_SPACING.repeat(left) + line + DEFAULT_SPACING.repeat(right))
                     .collect(Collectors.joining(System.lineSeparator()));
         }
-        int bannerWidth = subject.lines().findFirst().get().length();
+        int subjectWidth = subject.lines().findFirst().get().length();
         if (top > 0) {
-            subject = (DEFAULT_SPACING.repeat(bannerWidth) + System.lineSeparator()).repeat(top)
+            subject = (DEFAULT_SPACING.repeat(subjectWidth) + System.lineSeparator()).repeat(top)
                     + subject;
         }
         if (bottom > 0) {
             subject = subject
-                    + System.lineSeparator()
-                    + (DEFAULT_SPACING.repeat(bannerWidth) + System.lineSeparator()).repeat(bottom);
+                    + (System.lineSeparator() + DEFAULT_SPACING.repeat(subjectWidth)).repeat(bottom);
         }
         return subject;
     }

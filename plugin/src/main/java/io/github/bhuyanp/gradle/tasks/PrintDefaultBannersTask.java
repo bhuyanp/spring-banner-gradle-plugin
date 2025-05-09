@@ -48,9 +48,7 @@ public class PrintDefaultBannersTask extends DefaultTask implements SpringBanner
     public void generate() {
         new LinkedHashSet<>(SpringBannerExtension.DEFAULT_FONTS).forEach(font ->
                 System.out.println(getBannerWCaption(extension, project, font)
-                        + System.lineSeparator()
-                        + "_".repeat(10)
-                        + System.lineSeparator()
+                        + LINE_SEPARATOR
                 )
         );
     }

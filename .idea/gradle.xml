@@ -4,22 +4,10 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14/libexec" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/plugin" />
-          </set>
-        </option>
-        <option name="resolveExternalAnnotations" value="true" />
-      </GradleProjectSettings>
-      <GradleProjectSettings>
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT">
             <builds>
-              <build path="$PROJECT_DIR$/plugin" name="plugin">
+              <build path="$PROJECT_DIR$/plugin" name="spring-banner-gradle-plugin">
                 <projects>
                   <project path="$PROJECT_DIR$/plugin" />
                 </projects>

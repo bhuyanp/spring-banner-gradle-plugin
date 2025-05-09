@@ -59,18 +59,15 @@ public interface SpringBannerTask {
 
     private String getBanner(String font, String text, ThemeConfig bannerTheme) {
         if (text.isBlank()) return text;
-        System.out.println("  Banner Font: " + font);
+        System.out.println(System.lineSeparator()+"  Banner Font: " + font);
         String banner = FigletBannerRenderer.SINGLETON.render(font, text);
 
-        TextPadding textPadding = Theme.getBannerPadding(font);
-
         //For no background banners no left/right padding needed
-        if (!bannerTheme.hasBackColor()) {
-            textPadding = new TextPadding(textPadding.getTop(), 0, textPadding.getBottom(), 0);
+        if (bannerTheme.hasBackColor()) {
+            TextPadding textPadding = Theme.getBannerPadding(font);
+            System.out.println("  Banner Paddings: " + textPadding);
+            banner = textPadding.apply(banner);
         }
-
-        System.out.println("  Banner Paddings: " + textPadding);
-        banner = textPadding.apply(banner);
         banner = banner.lines()
                 .map(line -> colorize(line, bannerTheme))
                 .collect(Collectors.joining(System.lineSeparator()));
@@ -81,8 +78,11 @@ public interface SpringBannerTask {
 
     default String getCaption(String caption, ThemeConfig captionTheme) {
         if (caption.isBlank()) return caption;
-        //For no background, padding not needed for captions
-        boolean addPadding = captionTheme.hasBackColor();
+
+        // Remove spaces around caption lines
+        caption = caption.lines().map(String::trim).collect(Collectors.joining(System.lineSeparator()));
+
+        // Find the biggest line in caption
         int biggestLineLength = caption.lines().map(line -> {
                     if (line.contains(SPRING_BOOT_VERSION)) {
                         return line.length() - SPRING_BOOT_VERSION.length() + 5;
@@ -90,7 +90,9 @@ public interface SpringBannerTask {
                         return line.length();
                     }
                 })
-                .max(Integer::compareTo).get()+1;
+                .max(Integer::compareTo).get();
+
+        // Add spaces to smaller lines to match the biggestLineLength
         caption = caption.lines()
                 .map(line -> {
                     if (line.contains(SPRING_BOOT_VERSION)) {
@@ -100,12 +102,18 @@ public interface SpringBannerTask {
                     }
                 })
                 .collect(Collectors.joining(System.lineSeparator()));
+
+        //For no background, padding not needed for captions
+        boolean addPadding = captionTheme.hasBackColor();
         if (addPadding) {
-            caption = new TextPadding(1, 2, 1, 3).apply(caption);
+            caption = new TextPadding(1, 2, 1, 2).apply(caption);
         } else {
             caption = caption.lines().map(line->"| "+line).collect(Collectors.joining(System.lineSeparator()));
         }
         return colorize(caption, captionTheme);
     }
+
+    String LINE_SEPARATOR = System.lineSeparator()+"-".repeat(30);
+
 
 }

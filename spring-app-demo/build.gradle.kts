@@ -1,3 +1,5 @@
+import io.github.bhuyanp.gradle.theme.ThemePreset
+
 plugins {
     java
     id("org.springframework.boot").version("3.0.0")

@@ -1,6 +1,6 @@
-# Spring Banner Generator
+# Spring Banner Gradle Plugin
 
-Spring Banner Generator gradle plugin is for SpringBoot applications and it generates fun and colorful banners. Opinionated defaults are chosen
+Spring Banner Gradle Plugin is for Spring Boot applications and it generates fun and colorful banners. Opinionated defaults are chosen
 for the best banner experience. All you have to do is include the plugin to your build file.
 
 #### Requirement:
@@ -13,7 +13,7 @@ SpringBoot: 3.x.x
 plugins {
     ..
     ..
-    id("io.github.bhuyanp.spring-banner-generator").version("1.2")
+    id("io.github.bhuyanp.spring-banner-generator").version("1.4")
 }
 ```
 

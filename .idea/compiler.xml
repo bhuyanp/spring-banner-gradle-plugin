@@ -7,14 +7,24 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.36/5a30490a6e14977d97d9c73c924c1f1b5311ea95/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="plugin.main" />
+        <module name="io.github.bhuyanp.spring-banner-gradle-plugin.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-banner-generator.plugin.functionalTest" target="21" />
-      <module name="spring-banner-generator.plugin.main" target="21" />
-      <module name="spring-banner-generator.plugin.test" target="21" />
+      <module name="io.github.bhuyanp.spring-banner-gradle-plugin" target="17" />
+      <module name="plugin" target="17" />
+      <module name="plugin.functionalTest" target="17" />
+      <module name="plugin.main" target="17" />
+      <module name="plugin.test" target="17" />
+      <module name="spring-banner-generator.plugin" target="17" />
+      <module name="spring-banner-generator.plugin.functionalTest" target="17" />
+      <module name="spring-banner-generator.plugin.main" target="17" />
+      <module name="spring-banner-generator.plugin.test" target="17" />
       <module name="spring-banner-generator.spring-banner-generator" target="21" />
+      <module name="spring-banner-gradle-plugin.plugin" target="17" />
+      <module name="spring-banner-gradle-plugin.plugin.functionalTest" target="17" />
+      <module name="spring-banner-gradle-plugin.plugin.main" target="17" />
+      <module name="spring-banner-gradle-plugin.plugin.test" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

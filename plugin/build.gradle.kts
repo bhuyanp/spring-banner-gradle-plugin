@@ -2,7 +2,7 @@
 plugins {
     `java-gradle-plugin`
     signing
-    id("com.gradleup.shadow") version "9.0.0-beta13"
+    id("com.gradleup.shadow").version("9.0.0-beta13")
     id("com.gradle.plugin-publish").version("1.3.1")
 }
 
@@ -10,12 +10,12 @@ repositories {
     mavenCentral()
 }
 
-version = property("pluginVersion")!!
 group = property("pluginGroup")!!
+version = property("pluginVersion")!!
 
 gradlePlugin {
-    website.set("https://github.com/bhuyanp/spring-banner-generator")
-    vcsUrl.set("https://github.com/bhuyanp/spring-banner-generator")
+    website.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
+    vcsUrl.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
     plugins {
         create("springBannerGenerator") {
             id = "io.github.bhuyanp.spring-banner-generator"
@@ -69,7 +69,7 @@ gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            artifactId = "spring-banner-generator"
+            artifactId = "spring-banner-gradle plugin"
             from(components["java"])
             versionMapping {
                 usage("java-api") {
@@ -80,9 +80,9 @@ publishing {
                 }
             }
             pom {
-                name = "Spring Banner Generator"
-                description = "Generates colorful banners for SpringBoot applications."
-                url = "https://github.com/bhuyanp/spring-banner-generator"
+                name = "Spring Banner Gradle Plugin"
+                description = "Gradle plugin to generate colorful banners for SpringBoot applications."
+                url = "https://github.com/bhuyanp/spring-banner-gradle-plugin"
                 licenses {
                     license {
                         name = "The Apache License, Version 2.0"
@@ -97,9 +97,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/bhuyanp/spring-banner-generator.git"
-                    developerConnection = "scm:git:ssh://github.com/bhuyanp/spring-banner-generator.git"
-                    url = "https://github.com/bhuyanp/spring-banner-generator"
+                    connection = "scm:git:git://github.com/bhuyanp/spring-banner-gradle-plugin.git"
+                    developerConnection = "scm:git:ssh://github.com/bhuyanp/spring-banner-gradle-plugin.git"
+                    url = "https://github.com/bhuyanp/spring-banner-gradle-plugin"
                 }
             }
         }
