@@ -17,10 +17,10 @@ gradlePlugin {
     website.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
     vcsUrl.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
     plugins {
-        create("springBannerGenerator") {
-            id = "io.github.bhuyanp.spring-banner-generator"
+        create("springBannerGradlePlugin") {
+            id = "io.github.bhuyanp.spring-banner-gradle-plugin"
             implementationClass = "io.github.bhuyanp.gradle.SpringBannerGeneratorPlugin"
-            displayName = "Spring Banner Generator"
+            displayName = "Spring Banner Gradle Plugin"
             description = "Generates colorful banners for SpringBoot applications."
             tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "banner"))
         }

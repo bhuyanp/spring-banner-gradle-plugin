@@ -4,7 +4,7 @@ plugins {
     java
     id("org.springframework.boot").version("3.0.0")
     id("io.spring.dependency-management").version("1.1.7")
-    id("io.github.bhuyanp.spring-banner-generator")
+    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.0")
 }
 
 group = "io.pbhuyan.gradle"
@@ -30,7 +30,7 @@ springBanner {
 //    caption = """
 //    """.trimIndent()
 
-//    themePreset = ThemePreset.SURPRISE_ME
+    themePreset = ThemePreset.SURPRISE_ME
 
 //    bannerTheme = ThemeConfig(BRIGHT_CYAN_TEXT(), NONE(), DESATURATED())
 //    captionTheme = ThemeConfig(TEXT_COLOR(231, 247, 225), NONE(), NONE())
