@@ -86,6 +86,12 @@ public interface SpringBannerExtension {
         return getCaptionTheme().getOrNull();
     }
 
+    Property<Boolean> getPreviewBeforeGenerating();
+
+    default Boolean getPreviewBeforeGeneratingValue() {
+        return getPreviewBeforeGenerating().getOrElse(false);
+    }
+
 
     ListProperty<String> getBannerFonts();
 

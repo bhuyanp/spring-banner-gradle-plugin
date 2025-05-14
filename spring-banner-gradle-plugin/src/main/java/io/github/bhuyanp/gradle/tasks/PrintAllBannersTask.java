@@ -45,7 +45,7 @@ public class PrintAllBannersTask extends DefaultTask implements SpringBannerTask
     }
 
     @TaskAction
-    public void generate() {
+    public void print() {
         Fonts.all().forEach(font ->
                 System.out.println(getBannerWCaption(extension, project, font)
                         + LINE_SEPARATOR

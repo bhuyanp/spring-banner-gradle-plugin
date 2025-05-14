@@ -56,6 +56,9 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
                 .toPath()
                 .resolve(FILENAME);
         String result = getBannerWCaption(extension, project);
+        if(extension.getPreviewBeforeGeneratingValue()) {
+            System.out.println(result);
+        }
         try {
             Path dir = path.getParent();
             if (!Files.exists(dir)) {

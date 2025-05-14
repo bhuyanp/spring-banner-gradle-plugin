@@ -69,7 +69,6 @@ gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            artifactId = "spring-banner-gradle plugin"
             from(components["java"])
             versionMapping {
                 usage("java-api") {
