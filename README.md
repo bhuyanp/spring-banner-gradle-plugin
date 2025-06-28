@@ -13,7 +13,7 @@ SpringBoot: 3.x.x
 plugins {
     ..
     ..
-    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.0")
+    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.1")
 }
 ```
 
