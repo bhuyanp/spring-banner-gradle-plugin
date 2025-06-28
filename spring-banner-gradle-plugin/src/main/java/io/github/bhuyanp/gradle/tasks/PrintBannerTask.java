@@ -45,7 +45,7 @@ public class PrintBannerTask extends DefaultTask implements SpringBannerTask {
 
     @TaskAction
     public void print() {
-        String result = getBannerWCaption(extension, project);
+        String result = getBannerWCaption(extension, project, true);
         System.out.println(result);
     }
 

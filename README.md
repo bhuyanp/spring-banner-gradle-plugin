@@ -64,7 +64,7 @@ Plugin comes with four tasks.
     Writes generated banner.txt to the application resources folder.
 
 - PrintBanner
-    Prints banner in the console as per current app's configuration.
+    Prints banner in the console as per current project configuration.
 
 - PrintAllBanners
     Prints banners in the console using all the fonts available in the library.ππ
@@ -149,10 +149,40 @@ springBanner {
 ```
 Recommended order to provide the theme config is TEXT COLOR, BACKGROUND COLOR, EFFECT.
 
-
 Refer [Attribute.java](plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Attribute.java) for more color and formatting options.
 You can pass the attributes in any order. Plugin prints the theme config used when set to SURPRISE_ME Theme Preset into the build log. If you like the randomly generated
-banner, you may copy the banner and caption theme to your build file for future use. 
+banner, you may copy the banner and caption theme to your build file for future use.
+
+### Banner Preview
+
+Set this to true to preview the banner that is generated during build. It is useful during build on a CI server.
+
+```gradle
+springBanner {
+    showPreview = true // Default false
+}
+```
+
+### Banner Config
+
+When set to true, banner's current configuration in printed into the console during the build. Banner config info includes font used, banner padding, banner and caption theme.
+
+```gradle
+springBanner {
+    printBannerConfig = true // Default false
+}
+```
+#### Sample Banner Config
+```gradle
+> Task :generateBanner
+
+  Banner Font: standard
+  Banner Paddings: [1,3,1,3]
+  bannerTheme = ThemeConfig(TEXT_COLOR(246, 191, 255), MAGENTA_BACK(), DESATURATED())
+  captionTheme = ThemeConfig(BRIGHT_BLUE_TEXT(), BRIGHT_BLACK_BACK(), DIM())
+```
+
+
 
 ## Maven Plugin
 

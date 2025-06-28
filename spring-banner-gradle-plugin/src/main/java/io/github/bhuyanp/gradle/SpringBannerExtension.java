@@ -9,7 +9,6 @@ import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.provider.ListProperty;
 import org.gradle.api.provider.Property;
 import org.gradle.util.GradleVersion;
-import org.gradle.util.internal.DefaultGradleVersion;
 
 import java.util.Arrays;
 import java.util.List;
@@ -86,11 +85,18 @@ public interface SpringBannerExtension {
         return getCaptionTheme().getOrNull();
     }
 
-    Property<Boolean> getPreviewBeforeGenerating();
+    Property<Boolean> getShowPreview();
 
-    default Boolean getPreviewBeforeGeneratingValue() {
-        return getPreviewBeforeGenerating().getOrElse(false);
+    default Boolean getShowPreviewValue() {
+        return getShowPreview().getOrElse(false);
     }
+
+    Property<Boolean> getPrintBannerConfig();
+
+    default Boolean getPrintBannerConfigValue() {
+        return getPrintBannerConfig().getOrElse(false);
+    }
+
 
 
     ListProperty<String> getBannerFonts();

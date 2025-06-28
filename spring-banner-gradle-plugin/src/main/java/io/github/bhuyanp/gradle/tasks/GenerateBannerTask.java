@@ -55,10 +55,7 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
                         .getResourcesDir(), "sourceSets.main.resourcesDir")
                 .toPath()
                 .resolve(FILENAME);
-        String result = getBannerWCaption(extension, project);
-        if(extension.getPreviewBeforeGeneratingValue()) {
-            System.out.println(result);
-        }
+        String result = getBannerWCaption(extension, project, extension.getPrintBannerConfigValue());
         try {
             Path dir = path.getParent();
             if (!Files.exists(dir)) {
@@ -68,7 +65,10 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
                     Files.delete(path);
                 }
             }
-            Files.write(path, (System.lineSeparator() + result).getBytes(), StandardOpenOption.CREATE);
+            if(extension.getShowPreviewValue()) {
+                System.out.println(result);
+            }
+            Files.write(path, (result).getBytes(), StandardOpenOption.CREATE);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

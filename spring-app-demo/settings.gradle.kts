@@ -1,2 +1,2 @@
 rootProject.name = "spring-app-demo"
-//includeBuild("../plugin")
+includeBuild("../spring-banner-gradle-plugin")

@@ -4,7 +4,8 @@ plugins {
     java
     id("org.springframework.boot").version("3.0.0")
     id("io.spring.dependency-management").version("1.1.7")
-    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.0")
+    //id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.0")
+    id("io.github.bhuyanp.spring-banner-gradle-plugin")
 }
 
 group = "io.pbhuyan.gradle"
@@ -17,7 +18,7 @@ java {
 }
 
 springBanner {
-//    text = "Funky Banner"
+    text = "Funky Banner"
 //    bannerFonts = listOf("dotmatrix");
 //    bannerFonts = listOf(
 //        "ansiregular",
@@ -31,12 +32,16 @@ springBanner {
 //    """.trimIndent()
 
     themePreset = ThemePreset.SURPRISE_ME
+    showPreview = true
+    printBannerConfig = true
 
 //    bannerTheme = ThemeConfig(BRIGHT_CYAN_TEXT(), NONE(), DESATURATED())
 //    captionTheme = ThemeConfig(TEXT_COLOR(231, 247, 225), NONE(), NONE())
+
 }
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
 
 dependencies {
