@@ -11,6 +11,7 @@ import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskContainer;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
@@ -23,21 +24,29 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
 
     private static final String FILENAME = "banner.txt";
 
-    private final Project project;
     private final SpringBannerExtension extension;
+    private final File resourcesDir;
+    private final String projectName;
 
 
     @Inject
     public GenerateBannerTask(Project project) {
-        this.project = project;
+        this.resourcesDir = project.getExtensions()
+                .getByType(SourceSetContainer.class)
+                .getByName(SourceSet.MAIN_SOURCE_SET_NAME).getOutput().getResourcesDir();
         this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        setGroup(GROUP);
-        setDescription("Generates '" + FILENAME + "'.");
+        this.projectName = project.getName();
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
         var generateTask = tasks.register(NAME, GenerateBannerTask.class, project);
+        generateTask.configure(
+                    task -> {
+                        task.setGroup(GROUP);
+                        task.setDescription("Generates '" + FILENAME + "'.");
+                    }
+        );
         Task processResourceTask = tasks.getByName(project.getExtensions()
                 .getByType(SourceSetContainer.class)
                 .getByName(SourceSet.MAIN_SOURCE_SET_NAME)
@@ -48,14 +57,10 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
 
     @TaskAction
     public void generate() {
-        Path path = Objects.requireNonNull(project.getExtensions()
-                        .getByType(SourceSetContainer.class)
-                        .getByName(SourceSet.MAIN_SOURCE_SET_NAME)
-                        .getOutput()
-                        .getResourcesDir(), "sourceSets.main.resourcesDir")
+        Path path = Objects.requireNonNull(resourcesDir)
                 .toPath()
                 .resolve(FILENAME);
-        String result = getBannerWCaption(extension, project, extension.getPrintBannerConfigValue());
+        String result = getBannerWCaption(extension, projectName);
         try {
             Path dir = path.getParent();
             if (!Files.exists(dir)) {

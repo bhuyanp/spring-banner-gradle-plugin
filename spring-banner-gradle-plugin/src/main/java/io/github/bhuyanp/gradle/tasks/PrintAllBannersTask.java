@@ -29,25 +29,30 @@ import javax.inject.Inject;
 public class PrintAllBannersTask extends DefaultTask implements SpringBannerTask {
     private static final String NAME = "printAllBanners";
 
-    private final Project project;
     private final SpringBannerExtension extension;
+    private final String projectName;
 
     @Inject
     public PrintAllBannersTask(Project project) {
-        this.project = project;
         this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        setGroup(GROUP);
+        this.projectName = project.getName();
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintAllBannersTask.class, project);
+        tasks.register(NAME, PrintAllBannersTask.class, project)
+                .configure(
+                task -> {
+                    task.setGroup(GROUP);
+                    task.setDescription("Prints banners with all fonts to the console.");
+                }
+        );
     }
 
     @TaskAction
     public void print() {
         Fonts.all().forEach(font ->
-                System.out.println(getBannerWCaption(extension, project, font, true)
+                System.out.println(getBannerWCaption(extension, font, projectName)
                         + LINE_SEPARATOR
                 )
         );

@@ -28,24 +28,28 @@ import javax.inject.Inject;
 public class PrintBannerTask extends DefaultTask implements SpringBannerTask {
     private static final String NAME = "printBanner";
 
-    private final Project project;
     private final SpringBannerExtension extension;
+    private final String projectName;
 
     @Inject
     public PrintBannerTask(Project project) {
-        this.project = project;
         this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        setGroup(GROUP);
+        this.projectName = project.getName();
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintBannerTask.class, project);
+        tasks.register(NAME, PrintBannerTask.class, project).configure(
+                task -> {
+                    task.setGroup(GROUP);
+                    task.setDescription("Prints single banner to the console as per current app's configuration.");
+                }
+        );
     }
 
     @TaskAction
     public void print() {
-        String result = getBannerWCaption(extension, project, true);
+        String result = getBannerWCaption(extension, projectName);
         System.out.println(result);
     }
 

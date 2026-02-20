@@ -7,7 +7,6 @@ import io.github.bhuyanp.gradle.theme.TextPadding;
 import io.github.bhuyanp.gradle.theme.Theme;
 import io.github.bhuyanp.gradle.theme.ThemeConfig;
 import io.github.bhuyanp.gradle.theme.ThemePreset;
-import org.gradle.api.Project;
 
 import java.util.List;
 import java.util.Random;
@@ -19,7 +18,7 @@ import static io.github.bhuyanp.gradle.ansi.Ansi.colorize;
 public interface SpringBannerTask {
     String GROUP = "Spring Banner";
 
-    default String getBannerWCaption(SpringBannerExtension extension, Project project, boolean printBannerConfig) {
+    default String getBannerWCaption(SpringBannerExtension extension, String projectName) {
         List<String> bannerFonts = extension.getBannerFontsValue();
         String bannerFont = "usaflag";
         if (bannerFonts.size() > 1) {
@@ -27,16 +26,16 @@ public interface SpringBannerTask {
         } else if (bannerFonts.size() == 1) {
             bannerFont = bannerFonts.get(0);
         }
-        return getBannerWCaption(extension, project, bannerFont, printBannerConfig);
+        return getBannerWCaption(extension, bannerFont, projectName);
     }
 
-    default String getBannerWCaption(SpringBannerExtension extension, Project project, String bannerFont, boolean printBannerConfig) {
-        String bannerText = extension.getTextValue(project);
-        String captionText = extension.getCaptionValue(project);
+    default String getBannerWCaption(SpringBannerExtension extension, String bannerFont, String projectName) {
+        String bannerText = extension.getTextValue(projectName);
+        String captionText = extension.getCaptionValue();
         ThemePreset themePreset = extension.getThemePresetValue();
         ThemeConfig bannerTheme = extension.getBannerThemeValue() != null ? extension.getBannerThemeValue() : themePreset.getTheme().getBannerTheme();
         ThemeConfig captionTheme = extension.getCaptionThemeValue() != null ? extension.getCaptionThemeValue() : themePreset.getTheme().getCaptionTheme();
-        return getBannerWCaption(bannerFont, bannerText, bannerTheme, captionText, captionTheme, printBannerConfig);
+        return getBannerWCaption(bannerFont, bannerText, bannerTheme, captionText, captionTheme, extension.getPrintBannerConfigValue());
     }
 
     private String getBannerWCaption(String bannerFont, String bannerText, ThemeConfig bannerTheme, String captionText, ThemeConfig captionTheme, boolean printBannerConfig) {

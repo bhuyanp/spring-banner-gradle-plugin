@@ -33,11 +33,11 @@ public interface SpringBannerExtension {
 
     /**
      *
-     * @param project
+     * @param projectName Project name to be used if the text is not provided in the extension
      * @return Text provided in the extension otherwise the project name
      */
-    default String getTextValue(Project project) {
-        return getText().getOrElse(capitalizeProjectName(project.getName()));
+    default String getTextValue(String projectName) {
+        return getText().getOrElse(capitalizeProjectName(projectName));
     }
 
     /**
@@ -67,14 +67,13 @@ public interface SpringBannerExtension {
     Property<String> getCaption();
 
     String DEFAULT_CAPTION = """
-                Version                 : %s
                 Spring Boot Version     : %s
                 JDK Version             : %s
                 Gradle Version          : %s
                 """;
     String SPRING_BOOT_VERSION = "${spring-boot.version}";
-    default String getCaptionValue(Project project) {
-        return getCaption().getOrElse(DEFAULT_CAPTION.formatted(project.getVersion(), SPRING_BOOT_VERSION,
+    default String getCaptionValue() {
+        return getCaption().getOrElse(DEFAULT_CAPTION.formatted(SPRING_BOOT_VERSION,
                 JavaVersion.current(), GradleVersion.current().getVersion()));
 
     }

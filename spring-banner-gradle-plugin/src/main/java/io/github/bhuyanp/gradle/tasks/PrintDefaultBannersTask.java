@@ -29,25 +29,29 @@ import java.util.LinkedHashSet;
 public class PrintDefaultBannersTask extends DefaultTask implements SpringBannerTask {
     private static final String NAME = "printDefaultBanners";
 
-    private final Project project;
     private final SpringBannerExtension extension;
+    private final String projectName;
 
     @Inject
     public PrintDefaultBannersTask(Project project) {
-        this.project = project;
         this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        setGroup(GROUP);
+        this.projectName = project.getName();
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintDefaultBannersTask.class, project);
+        tasks.register(NAME, PrintDefaultBannersTask.class, project).configure(
+                task -> {
+                    task.setGroup(GROUP);
+                    task.setDescription("Prints banners with only default fonts to the console.");
+                }
+        );
     }
 
     @TaskAction
     public void print() {
         new LinkedHashSet<>(SpringBannerExtension.DEFAULT_FONTS).forEach(font ->
-                System.out.println(getBannerWCaption(extension, project, font, true)
+                System.out.println(getBannerWCaption(extension, font, projectName)
                         + LINE_SEPARATOR
                 )
         );
