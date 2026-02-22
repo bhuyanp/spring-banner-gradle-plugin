@@ -18,6 +18,7 @@ plugins {
 ```
 
 #### Previews
+[surprise-me.mp4](media/surprise-me.mp4)
 
 <video controls>
   <source src="media/surprise-me.mp4" type="video/mp4">
