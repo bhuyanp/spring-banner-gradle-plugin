@@ -18,11 +18,7 @@ plugins {
 ```
 
 #### Previews
-[surprise-me.mp4](media/surprise-me.mp4)
-
-<video controls>
-  <source src="media/surprise-me.mp4" type="video/mp4">
-</video>
+[![Surprise Me](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me-thumbnail.png)](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me.mp4)
 
 
 ## Tasks
