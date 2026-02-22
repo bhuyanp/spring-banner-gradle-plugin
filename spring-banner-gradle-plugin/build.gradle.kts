@@ -1,9 +1,9 @@
 
 plugins {
     `java-gradle-plugin`
-    signing
+    //signing
     id("com.gradleup.shadow").version("9.0.0-beta13")
-    id("com.gradle.plugin-publish").version("1.3.1")
+    id("com.gradle.plugin-publish").version("2.0.0")
 }
 
 repositories {
@@ -14,10 +14,10 @@ group = property("pluginGroup")!!
 version = property("pluginVersion")!!
 
 gradlePlugin {
-    website.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
-    vcsUrl.set("https://github.com/bhuyanp/spring-banner-gradle-plugin")
+    website = "https://github.com/bhuyanp/spring-banner-gradle-plugin"
+    vcsUrl = "https://github.com/bhuyanp/spring-banner-gradle-plugin"
     plugins {
-        create("springBannerGradlePlugin") {
+        register("springBannerGradlePlugin") {
             id = "io.github.bhuyanp.spring-banner-gradle-plugin"
             implementationClass = "io.github.bhuyanp.gradle.SpringBannerGeneratorPlugin"
             displayName = "Spring Banner Gradle Plugin"
@@ -25,7 +25,6 @@ gradlePlugin {
             tags.set(listOf("spring", "spring-boot", "spring-framework", "java", "banner"))
         }
     }
-
 }
 
 dependencies {
@@ -107,9 +106,9 @@ tasks.shadowJar {
     archiveClassifier = ""
 }
 
-signing {
-    sign(publishing.publications["mavenJava"])
-}
+//signing {
+//    sign(publishing.publications["mavenJava"])
+//}
 
 
 tasks.named<Task>("check") {
