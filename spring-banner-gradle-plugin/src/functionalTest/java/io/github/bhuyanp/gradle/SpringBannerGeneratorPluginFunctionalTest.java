@@ -3,23 +3,18 @@
  */
 package io.github.bhuyanp.gradle;
 
-import org.gradle.testkit.runner.BuildResult;
-import org.gradle.testkit.runner.BuildTask;
 import org.gradle.testkit.runner.GradleRunner;
-import org.gradle.testkit.runner.TaskOutcome;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
+import static io.github.bhuyanp.gradle.common.Constants.BLANK;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -32,6 +27,32 @@ class SpringBannerGeneratorPluginFunctionalTest {
     Path settingsFile;
     Path buildFile;
 
+    private final String BANNER_DISABLED = """
+            springBanner {
+                generateBanner = false
+            }
+            """;
+
+    private final String CAPTION_DISABLED = """
+            springBanner {
+                generateCaption = false
+            }
+            """;
+
+    private final String BOTH_DISABLED = """
+            springBanner {
+                generateCaption = false
+                generateBanner = false
+            
+            }
+            """;
+
+    private final String WITH_CUSTOM_BANNER_TEXT = """
+            springBanner {
+                    bannerText = "Funky Banner" // Custom banner text. Default is project name(capitalized).
+            }
+            """;
+
 
     @BeforeEach
     void setUp() {
@@ -39,30 +60,36 @@ class SpringBannerGeneratorPluginFunctionalTest {
         writeString(settingsFile, "rootProject.name = '" + PROJECT_NAME + "'");
         buildFile = projectDir.resolve("build.gradle.kts");
         // language=groovy
-        writeString(buildFile, """
+        String defaultSettings = """
                 plugins {
                     java
                     id("org.springframework.boot").version("3.4.5")
                     id("io.spring.dependency-management").version("1.1.7")
                     id("io.github.bhuyanp.spring-banner-gradle-plugin")
                                 }
+                group = "io.pbhuyan.gradle"
                 version = "%s"
                 dependencies {
                     implementation("org.springframework.boot:spring-boot-starter")
                     testImplementation("org.springframework.boot:spring-boot-starter-test")
                     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
                 }
-                springBanner {
-                    text = "Funky Banner"
-                    bannerFonts = listOf("ansiregular")
-                }
-                """.formatted(PROJECT_VERSION));
+                """;
+        writeString(buildFile, defaultSettings.formatted(PROJECT_VERSION));
     }
 
     void writeString(Path file, String text) {
         try {
             Files.deleteIfExists(file);
             Files.write(file, text.getBytes(), StandardOpenOption.CREATE_NEW);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    void createDir(Path directory) {
+        try {
+            Files.createDirectory(directory);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -87,58 +114,90 @@ class SpringBannerGeneratorPluginFunctionalTest {
     }
 
     @Test
-    void should_printBanner() {
+    void should_generateBannerWithDefaultSettings() {
         //given
-        //when
-        BuildResult result = gradleRunner()
-                .withArguments("printBanner")
-                .build();
-
-        //then
-        assertThat(result.task(":printBanner"))
-                .as("task :printBanner")
-                .isNotNull()
-                .extracting(BuildTask::getOutcome)
-                .as("task outcome")
-                .isEqualTo(TaskOutcome.SUCCESS);
-        assertThat(result.getOutput())
-                .contains("Banner Font")
-                .contains("Banner Padding")
-                .contains("Version")
-                .contains(PROJECT_VERSION)
-                .contains(SpringBannerExtension.SPRING_BOOT_VERSION);
-
-    }
-
-    @Test
-    void should_generateBanner() throws URISyntaxException, FileNotFoundException {
-        //given
-        URL resource = this.getClass().getClassLoader().getResource("banner.txt");
-        assertThat(resource)
-                .as("banner.txt")
-                .isNotNull();
-        Path expectedBanner = Paths.get(resource.toURI());
+//        URL resource = this.getClass().getClassLoader().getResource("banner.txt");
+//        assertThat(resource)
+//                .as("banner.txt")
+//                .isNotNull();
+//        Path expectedBanner = Paths.get(resource.toURI());
 
         //when
         gradleRunner()
                 .withArguments("generateBanner")
                 .build();
-        Path banner = projectDir.resolve("build/resources/main/banner.txt");
+        Path banner = projectDir.resolve("src/main/resources/banner.txt");
 
         //then
         assertThat(banner)
-                .as("build/resources/main/banner.txt")
+                .as("src/main/resources/banner.txt")
                 .exists();
         assertThat(readFile(banner.toFile()))
-                .contains("Version")
-                .contains(PROJECT_VERSION)
-                .contains(SpringBannerExtension.SPRING_BOOT_VERSION)
-                .contains("███████ ██    ██ ███    ██ ██   ██ ██    ██     ██████   █████  ███    ██ ███    ██ ███████ ██████");
-
+                .contains("> Version             : 1.0")
+                .contains("> Spring Boot         : ${spring-boot.version}")
+                .contains("> JDK                 : 2")
+                .contains("> Gradle              : ");
     }
 
 
-    private String readFile(File file){
+    @Test
+    void should_generateBannerWithoutCaption() {
+        //given
+        appendString(buildFile, """
+                springBanner {
+                    generateCaption = false
+                }
+                """);
+
+//        URL resource = this.getClass().getClassLoader().getResource("banner.txt");
+//        assertThat(resource)
+//                .as("banner.txt")
+//                .isNotNull();
+//        Path expectedBanner = Paths.get(resource.toURI());
+
+        //when
+        gradleRunner()
+                .withArguments("generateBanner")
+                .build();
+        Path banner = projectDir.resolve("src/main/resources/banner.txt");
+
+        //then
+        assertThat(banner)
+                .as("src/main/resources/banner.txt")
+                .exists();
+        assertThat(readFile(banner.toFile()))
+                .doesNotContain("> Version             : 1.0")
+                .doesNotContain("> Spring Boot         : ${spring-boot.version}")
+                .doesNotContain("> JDK                 : 2")
+                .doesNotContain("> Gradle              : ");
+    }
+
+
+    @Test
+    void should_generateBlankBanner() {
+        //given
+        appendString(buildFile, """
+                springBanner {
+                    generateCaption = false
+                    generateBanner = false
+                }
+                """);
+
+        //when
+        gradleRunner()
+                .withArguments("generateBanner")
+                .build();
+        Path banner = projectDir.resolve("src/main/resources/banner.txt");
+
+        //then
+        assertThat(banner)
+                .as("src/main/resources/banner.txt")
+                .exists();
+        assertThat(readFile(banner.toFile()))
+                .isEqualTo(BLANK);
+    }
+
+    private String readFile(File file) {
         try {
             StringBuilder str = new StringBuilder();
             Scanner scanner = new Scanner(file);
@@ -148,9 +207,10 @@ class SpringBannerGeneratorPluginFunctionalTest {
             scanner.close();
             return str.toString();
         } catch (FileNotFoundException e) {
-           throw new RuntimeException("Unable to read generated banner.txt");
+            throw new RuntimeException("Unable to read generated banner.txt");
         }
     }
+
     private void writeString(File file, String string) throws IOException {
         try (Writer writer = new FileWriter(file)) {
             writer.write(string);

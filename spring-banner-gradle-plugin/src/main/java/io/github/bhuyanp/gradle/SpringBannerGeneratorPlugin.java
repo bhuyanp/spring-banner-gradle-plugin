@@ -4,9 +4,9 @@
 package io.github.bhuyanp.gradle;
 
 import io.github.bhuyanp.gradle.tasks.GenerateBannerTask;
-import io.github.bhuyanp.gradle.tasks.PrintAllBannersTask;
+import io.github.bhuyanp.gradle.tasks.PrintAllFontsTask;
 import io.github.bhuyanp.gradle.tasks.PrintBannerTask;
-import io.github.bhuyanp.gradle.tasks.PrintDefaultBannersTask;
+import io.github.bhuyanp.gradle.tasks.PrintDefaultFontsTask;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
  * <ul>
  *     <li>{@link GenerateBannerTask} [DEFAULT]</li>
  *     <li>{@link PrintBannerTask} - Prints banner in the console as per current app's configuration</li>
- *     <li>{@link PrintAllBannersTask} - Prints banners in the console using all the fonts available in the library</li>
+ *     <li>{@link PrintAllFontsTask} - Prints banners in the console using all the fonts available in the library</li>
  * </ul>
  *
  * @author Prasanta Bhuyan
@@ -34,7 +34,7 @@ public class SpringBannerGeneratorPlugin implements Plugin<Project> {
         SpringBannerExtension.create(project);
         GenerateBannerTask.register(project);
         PrintBannerTask.register(project);
-        PrintAllBannersTask.register(project);
-        PrintDefaultBannersTask.register(project);
+        PrintAllFontsTask.register(project);
+        PrintDefaultFontsTask.register(project);
     }
 }

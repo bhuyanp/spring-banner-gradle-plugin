@@ -17,35 +17,34 @@
 package io.github.bhuyanp.gradle.tasks;
 
 
-import io.github.bhuyanp.gradle.SpringBannerExtension;
-import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskContainer;
 
 import javax.inject.Inject;
 
-public class PrintBannerTask extends DefaultTask implements SpringBannerTask {
+public class PrintBannerTask extends SpringBannerTask {
     private static final String NAME = "printBanner";
 
-    private final Project project;
-    private final SpringBannerExtension extension;
 
     @Inject
     public PrintBannerTask(Project project) {
-        this.project = project;
-        this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        setGroup(GROUP);
+        super(project);
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintBannerTask.class, project);
+        tasks.register(NAME, PrintBannerTask.class, project).configure(
+                task -> {
+                    task.setGroup(GROUP);
+                    task.setDescription("Prints banner with existing configuration.");
+                }
+        );
     }
 
     @TaskAction
     public void print() {
-        String result = getBannerWCaption(extension, project, true);
+        String result = generate();
         System.out.println(result);
     }
 

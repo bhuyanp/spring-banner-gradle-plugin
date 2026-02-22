@@ -13,86 +13,75 @@ SpringBoot: 3.x.x
 plugins {
     ..
     ..
-    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.1")
+    id("io.github.bhuyanp.spring-banner-gradle-plugin").version("1.2")
 }
 ```
 
 #### Previews
-<details>
-<summary>Dark Theme Preview:</summary>
-<img src="./docs/images/dark1.png" alt="Dark Theme Banner 1" title="Dark Theme Banner 1" width="400"/>
-<img src="./docs/images/dark2.png" alt="Dark Theme Banner 2" title="Dark Theme Banner 2" width="400"/>
-<img src="./docs/images/dark3.png" alt="Dark Theme Banner 3" title="Dark Theme Banner 3" width="400"/>
-<img src="./docs/images/dark4.png" alt="Dark Theme Banner 4" title="Dark Theme Banner 4" width="400"/>
-</details>
-<details>
-<summary>Light Theme Preview:</summary>
-<img src="./docs/images/light1.png" alt="Light Theme Banner 1" title="Light Theme Banner 1" width="400"/>
-<img src="./docs/images/light2.png" alt="Light Theme Banner 2" title="Light Theme Banner 2" width="400"/>
-<img src="./docs/images/light3.png" alt="Light Theme Banner 3" title="Light Theme Banner 3" width="400"/>
-<img src="./docs/images/light4.png" alt="Light Theme Banner 4" title="Light Theme Banner 4" width="400"/>
-</details>
+[![Surprise Me](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me-thumbnail.png)](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me.mp4)
 
-<details>
-<summary>Surprise Me:</summary>
-<img src="./docs/images/surprise-me1.png" alt="Surprise Me Theme Banner 1" title="Surprise Me Theme Banner 1" width="400"/>
-<img src="./docs/images/surprise-me2.png" alt="Surprise Me Theme Banner 2" title="Surprise Me Theme Banner 2" width="400"/>
-<img src="./docs/images/surprise-me3.png" alt="Surprise Me Theme Banner 3" title="Surprise Me Theme Banner 3" width="400"/>
-<img src="./docs/images/surprise-me4.png" alt="Surprise Me Theme Banner 4" title="Surprise Me Theme Banner 4" width="400"/>
-<img src="./docs/images/surprise-me5.png" alt="Surprise Me Theme Banner 5" title="Surprise Me Theme Banner 5" width="400"/>
-<img src="./docs/images/surprise-me6.png" alt="Surprise Me Theme Banner 6" title="Surprise Me Theme Banner 6" width="400"/>
-<img src="./docs/images/surprise-me7.png" alt="Surprise Me Theme Banner 7" title="Surprise Me Theme Banner 7" width="400"/>
-<img src="./docs/images/surprise-me8.png" alt="Surprise Me Theme Banner 8" title="Surprise Me Theme Banner 8" width="400"/>
-<img src="./docs/images/surprise-me9.png" alt="Surprise Me Theme Banner 9" title="Surprise Me Theme Banner 9" width="400"/>
-<img src="./docs/images/surprise-me10.png" alt="Surprise Me Theme Banner 10" title="Surprise Me Theme Banner 10" width="400"/>
-</details>
-
-#### Credits:
-
-This plugin is inspired by [spring-banner-gradle-plugin](https://alexengrig.github.io/spring-banner-gradle-plugin/)
-
-Colorizer by [JColor](https://github.com/dialex/JColor?tab=readme-ov-file)
 
 ## Tasks
 
 Plugin comes with four tasks.
 
-<img src="./docs/images/tasks.png" alt="Tasks" title="Tasks" width="600"/>
+<img src="media/tasks.png" alt="Tasks" title="Tasks" width="600"/>
 
 ```kotlin
 - GenerateBanner [DEFAULT]
-    Writes generated banner.txt to the application resources folder.
+    Writes generated banner.txt to the application resources folder
 
 - PrintBanner
-    Prints banner in the console as per current project configuration.
+    Prints banner in the console as per current project configuration
 
-- PrintAllBanners
-    Prints banners in the console using all the fonts available in the library.ππ
+- PrintAllFonts
+    Prints banners in the console using all the fonts available in the library
 
-- PrintDefaultBanner
-    Prints banners in the console using all the default fonts plugin cycles through.
+- PrintDefaultFonts
+    Prints banners in the console using all the default fonts plugin cycles through when no custom fonts are provided
 ```
 
 ## Customizations
 
-Plugin comes with ample customizable features. You can pick and choose which part you want to customize.
+Plugin comes with ample customizability. You can pick and choose which part you want to customize.
 
-### Text
-
-Banner text that appears at the top. If not provided, plugin takes project name, removes dashes from it and capitalizes the first letter of every word.
-Custom texts can be provided as shown below.
-
+### Generate Banner
 ```gradle
 springBanner {
-    text = "Funky Banner"
+    generateBanner = true // Flag to generate top section of the banner. Default is true.
+}
+```
+
+### Generate Caption
+```gradle
+springBanner {
+    generateCaption = true // Flag to generate bottom section(caption) of the banner. Default is true.
+}
+```
+
+### Banner Text
+Banner text that appears at the top. If not provided, plugin takes project name, removes dashes from it and capitalizes the first letter of every word.
+Custom texts can be provided as shown below.
+```gradle
+springBanner {
+    bannerText = "Funky Banner"
+}
+```
+
+### Theme Preset
+Check the screenshots for the themes generated by different theme presets. SURPRISE_ME is default and it generates random theme for the banner and caption every time it is invoked.
+For details about other theme presets, refer [THEME_PRESET](spring-banner-gradle-plugin/src/main/java/io/github/bhuyanp/gradle/theme/THEME_PRESET.java)
+```gradle
+springBanner {
+    themePreset =
+        THEME_PRESET.SURPRISE_ME // Theme preset to use for the banner styling. Default is SURPRISE_ME. Other options include DARK, LIGHT, SURPRISE_ME_LIGHT etc.
 }
 ```
 
 ### Banner Fonts
 
 You can provide one or more banners fonts to the plugin. For more than one fonts, plugin will randomly pick font everytime it is invoked.
-If no fonts are provided then plugin randomly cycles through a chosen list of fonts. DEFAULT_FONTS can be found here. [SpringBannerExtension](plugin/src/main/java/io/github/bhuyanp/gradle/SpringBannerExtension.java)
-
+If no fonts are provided then plugin randomly cycles through a chosen list of fonts. DEFAULT_FONTS can be found here. [Constants.java](spring-banner-gradle-plugin/src/main/java/io/github/bhuyanp/gradle/common/Constants.java)
 ```gradle
 springBanner {
     bannerFonts = listOf(
@@ -108,87 +97,59 @@ springBanner {
 
 ### Caption
 
-Caption appears below the banner and this section can be be used to display useful information about the application. Plugin provides default caption with several useful
-info about the application. Check the screenshots for default caption. Custom captions can be provided as shown below. For no caption, pass an empty string.
+Caption appears below the banner and this section can be used to display useful information about the application. Plugin provides default caption with several useful
+info about the application. Check the screenshots for default caption. Fine grain control over the caption can be achieved using CaptionSetting as shown below. 
+
+You can choose to hide certain info from the caption, change the bullet style and even provide custom caption text.
 
 ```gradle
 springBanner {
-// for custom caption
-    caption = """
-        Caption text line 1
-        Caption text line 2
-        Caption text line 3
-    """.trimIndent()
-    
-// for no caption
-caption = ""
+    captionSetting =
+        CaptionSetting.builder() // Caption settings for the fine grain control over banner caption. It includes options like caption bullet style, whether to hide several versions etc.
+            .text(
+                """ 
+            App: ${'$'}appVersion
+            Spring Boot: ${'$'}springBootVersion
+            JDK: ${'$'}jdkVersion
+            Gradle: ${'$'}gradleVersion
+            XYZ Library: 1.0.0
+        """.trimIndent())
+            /* Custom caption text to override default caption generated by the plugin. Default caption includes Spring Boot version, JDK version and Gradle version. You can use the following variables in the caption text to include dynamic values:
+                    ${'$'}appVersion - The version of your application (from build file)
+                    ${'$'}springBootVersion - The version of Spring Boot being used
+                    ${'$'}jdkVersion - The version of JDK being used
+                    ${'$'}gradleVersion - The version of Gradle being used
+             */
+            .hideAppVersion(false) // Whether to hide the app version in the caption. Default is false.
+            .hideSpringBootVersion(false) // Whether to hide the Spring Boot version in the caption. Default is false.
+            .hideJDKVersion(false) // Whether to hide the JDK. Default is false.
+            .hideGradleVersion(false) // Whether to hide the Gradle version in the caption. Default is false.
+            .captionBulletStyle(CaptionSetting.CAPTION_BULLET_STYLE.GT) // Bullet style to use for the caption. Default is GT (greater than symbol). Other options include PIPE("|"),GTA("->"),POUND("#"),DASH("-"),DOLLAR("$"),RANDOM("Random"),NONE("").
+            .build() // Caption settings for the fine grain control over banner caption. It includes options like caption bullet style, whether to hide several versions etc.
 }
 ```
 
-### Theme
-
-Spring banner generator comes with two global themes, DARK and LIGHT. DARK is default. You can change the theme as shown below.
-
-```gradle
-springBanner {
-   // Dark is default when no themePreset is provided
-   themePreset = ThemePreset.DARK / ThemePreset.LIGHT / ThemePreset.SURPRISE_ME
-}
-```
-
-### Banner and Caption Theme Customization
-
-Default theme of banner and caption derived from the Theme Preset can be overridden. You can customize them to
-your heart's content.
-
-```gradle
-springBanner {
-    bannerTheme = ThemeConfig(BRIGHT_WHITE_TEXT(), BACK_COLOR(70, 45, 95), BOLD())
-    captionTheme = ThemeConfig(CYAN_TEXT(), NONE(), ITALIC())
-}
-```
-Recommended order to provide the theme config is TEXT COLOR, BACKGROUND COLOR, EFFECT.
-
-Refer [Attribute.java](plugin/src/main/java/io/github/bhuyanp/gradle/ansi/Attribute.java) for more color and formatting options.
-You can pass the attributes in any order. Plugin prints the theme config used when set to SURPRISE_ME Theme Preset into the build log. If you like the randomly generated
-banner, you may copy the banner and caption theme to your build file for future use.
-
-### Banner Preview
-
-Set this to true to preview the banner that is generated during build. It is useful during build on a CI server.
-
-```gradle
-springBanner {
-    showPreview = true // Default false
-}
-```
-
-### Banner Config
-
-When set to true, banner's current configuration in printed into the console during the build. Banner config info includes font used, banner padding, banner and caption theme.
-
-```gradle
-springBanner {
-    printBannerConfig = true // Default false
-}
-```
-#### Sample Banner Config
-```gradle
-> Task :generateBanner
-
-  Banner Font: standard
-  Banner Paddings: [1,3,1,3]
-  bannerTheme = ThemeConfig(TEXT_COLOR(246, 191, 255), MAGENTA_BACK(), DESATURATED())
-  captionTheme = ThemeConfig(BRIGHT_BLUE_TEXT(), BRIGHT_BLACK_BACK(), DIM())
-```
-
+## IntelliJ Plugin
+IntelliJ plugin with similar functionality and lot more customizability located at [Funnky Banners](https://plugins.jetbrains.com/plugin/29672-funky-banners)
 
 
 ## Maven Plugin
-
-Maven plugin with simillar functionality located at https://github.com/bhuyanp/spring-banner-maven-plugin
+Maven plugin with similar functionality located at https://github.com/bhuyanp/spring-banner-maven-plugin
 
 ## License
 
 This project is [licensed](LICENSE) under
 [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+## Credits
+
+- [Figlet](http://www.figlet.org)
+- [JFiglet](https://github.com/dtmo/jfiglet)
+- [spring-banner-gradle-plugin](https://alexengrig.github.io/spring-banner-gradle-plugin/)
+- Colorizer by [JColor](https://github.com/dialex/jcolor)
+
+## Love the Plugin?
+
+Please consider supporting our efforts.
+
+<a href="https://buymeacoffee.com/bhuyanp"><img src="media/qr-code.png" alt="Buy Me A Coffee" width="120px"></a>

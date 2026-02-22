@@ -7,3 +7,5 @@ build
 ./.gradle
 
 .idea
+
+./spring-app-demo/src/main/resources/banner.txt
