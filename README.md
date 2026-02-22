@@ -18,34 +18,10 @@ plugins {
 ```
 
 #### Previews
-<details>
-<summary>Dark Theme Preview:</summary>
-<img src="media/dark1.png" alt="Dark Theme Banner 1" title="Dark Theme Banner 1" width="400"/>
-<img src="media/dark2.png" alt="Dark Theme Banner 2" title="Dark Theme Banner 2" width="400"/>
-<img src="media/dark3.png" alt="Dark Theme Banner 3" title="Dark Theme Banner 3" width="400"/>
-<img src="media/dark4.png" alt="Dark Theme Banner 4" title="Dark Theme Banner 4" width="400"/>
-</details>
-<details>
-<summary>Light Theme Preview:</summary>
-<img src="media/light1.png" alt="Light Theme Banner 1" title="Light Theme Banner 1" width="400"/>
-<img src="media/light2.png" alt="Light Theme Banner 2" title="Light Theme Banner 2" width="400"/>
-<img src="media/light3.png" alt="Light Theme Banner 3" title="Light Theme Banner 3" width="400"/>
-<img src="media/light4.png" alt="Light Theme Banner 4" title="Light Theme Banner 4" width="400"/>
-</details>
 
-<details>
-<summary>Surprise Me:</summary>
-<img src="media/surprise-me1.png" alt="Surprise Me Theme Banner 1" title="Surprise Me Theme Banner 1" width="400"/>
-<img src="media/surprise-me2.png" alt="Surprise Me Theme Banner 2" title="Surprise Me Theme Banner 2" width="400"/>
-<img src="media/surprise-me3.png" alt="Surprise Me Theme Banner 3" title="Surprise Me Theme Banner 3" width="400"/>
-<img src="media/surprise-me4.png" alt="Surprise Me Theme Banner 4" title="Surprise Me Theme Banner 4" width="400"/>
-<img src="media/surprise-me5.png" alt="Surprise Me Theme Banner 5" title="Surprise Me Theme Banner 5" width="400"/>
-<img src="media/surprise-me6.png" alt="Surprise Me Theme Banner 6" title="Surprise Me Theme Banner 6" width="400"/>
-<img src="media/surprise-me7.png" alt="Surprise Me Theme Banner 7" title="Surprise Me Theme Banner 7" width="400"/>
-<img src="media/surprise-me8.png" alt="Surprise Me Theme Banner 8" title="Surprise Me Theme Banner 8" width="400"/>
-<img src="media/surprise-me9.png" alt="Surprise Me Theme Banner 9" title="Surprise Me Theme Banner 9" width="400"/>
-<img src="media/surprise-me10.png" alt="Surprise Me Theme Banner 10" title="Surprise Me Theme Banner 10" width="400"/>
-</details>
+<video controls>
+  <source src="media/surprise-me.mp4" type="video/mp4">
+</video>
 
 
 ## Tasks
