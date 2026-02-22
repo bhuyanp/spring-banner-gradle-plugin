@@ -1,8 +1,7 @@
 package io.github.bhuyanp.gradle.tasks;
 
 
-import io.github.bhuyanp.gradle.SpringBannerExtension;
-import org.gradle.api.DefaultTask;
+import lombok.extern.slf4j.Slf4j;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
 import org.gradle.api.tasks.SourceSet;
@@ -18,49 +17,44 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Objects;
-
-public class GenerateBannerTask extends DefaultTask implements SpringBannerTask {
+@Slf4j
+public class GenerateBannerTask extends SpringBannerTask {
     public static final String NAME = "generateBanner";
 
     private static final String FILENAME = "banner.txt";
 
-    private final SpringBannerExtension extension;
-    private final File resourcesDir;
-    private final String projectName;
-
+    protected final File resourcesDir;
 
     @Inject
     public GenerateBannerTask(Project project) {
+        super(project);
         this.resourcesDir = project.getExtensions()
                 .getByType(SourceSetContainer.class)
-                .getByName(SourceSet.MAIN_SOURCE_SET_NAME).getOutput().getResourcesDir();
-        this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        this.projectName = project.getName();
+                .getByName(SourceSet.MAIN_SOURCE_SET_NAME).getResources().getSrcDirs().iterator().next();
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        var generateTask = tasks.register(NAME, GenerateBannerTask.class, project);
-        generateTask.configure(
+        var generateBannerTask = tasks.register(NAME, GenerateBannerTask.class, project);
+        generateBannerTask.configure(
                     task -> {
                         task.setGroup(GROUP);
-                        task.setDescription("Generates '" + FILENAME + "'.");
+                        task.setDescription("Generates '" + FILENAME + "' and stores under src/main/resources.");
                     }
         );
         Task processResourceTask = tasks.getByName(project.getExtensions()
                 .getByType(SourceSetContainer.class)
                 .getByName(SourceSet.MAIN_SOURCE_SET_NAME)
                 .getProcessResourcesTaskName());
-        processResourceTask.finalizedBy(generateTask.get());
+        processResourceTask.dependsOn(generateBannerTask.get());
     }
 
-
     @TaskAction
-    public void generate() {
+    public void generateBanner() {
         Path path = Objects.requireNonNull(resourcesDir)
                 .toPath()
                 .resolve(FILENAME);
-        String result = getBannerWCaption(extension, projectName);
+        String result = generate();
         try {
             Path dir = path.getParent();
             if (!Files.exists(dir)) {
@@ -70,10 +64,8 @@ public class GenerateBannerTask extends DefaultTask implements SpringBannerTask 
                     Files.delete(path);
                 }
             }
-            if(extension.getShowPreviewValue()) {
-                System.out.println(result);
-            }
             Files.write(path, (result).getBytes(), StandardOpenOption.CREATE);
+            log.info("Banner generated at: " + path.toAbsolutePath());
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

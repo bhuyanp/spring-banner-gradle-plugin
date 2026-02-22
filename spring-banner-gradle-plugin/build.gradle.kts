@@ -64,8 +64,6 @@ testing {
 }
 gradlePlugin.testSourceSets.add(sourceSets["functionalTest"])
 
-
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {

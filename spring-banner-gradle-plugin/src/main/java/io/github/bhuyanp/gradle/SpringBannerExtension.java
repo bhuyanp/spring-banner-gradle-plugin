@@ -1,18 +1,17 @@
 package io.github.bhuyanp.gradle;
 
 
-import io.github.bhuyanp.gradle.theme.ThemeConfig;
-import io.github.bhuyanp.gradle.theme.ThemePreset;
-import org.gradle.api.JavaVersion;
+import io.github.bhuyanp.gradle.common.Constants;
+import io.github.bhuyanp.gradle.model.CaptionSetting;
+import io.github.bhuyanp.gradle.theme.THEME_PRESET;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.provider.ListProperty;
 import org.gradle.api.provider.Property;
-import org.gradle.util.GradleVersion;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static io.github.bhuyanp.gradle.common.Constants.DEFAULT_CAPTION_BULLET_STYLE;
 
 /**
  * Extension for the plugin with various customization option
@@ -29,107 +28,67 @@ public interface SpringBannerExtension {
         extensions.create(NAME, SpringBannerExtension.class);
     }
 
-    Property<String> getText();
-
     /**
-     *
-     * @param projectName Project name to be used if the text is not provided in the extension
-     * @return Text provided in the extension otherwise the project name
+     * Flag to generate top section of the banner. Default is true.
      */
-    default String getTextValue(String projectName) {
-        return getText().getOrElse(capitalizeProjectName(projectName));
+    Property<Boolean> getGenerateBanner();
+
+    default boolean getGenerateBannerValue() {
+        return getGenerateBanner().getOrElse(true);
     }
 
     /**
-     *
-     * @param projectName Name of the project
-     * @return The capitalized project name and dashes replaces with spaces
+     * Flag to generate top section(caption) of the banner. Default is true.
      */
-    default String capitalizeProjectName(String projectName) {
-        return Arrays.stream(projectName.replace('-', ' ').split(" ")).map(name ->
-                        name.substring(0, 1).toUpperCase() + name.substring(1))
-                .collect(Collectors.joining(" "));
+    Property<Boolean> getGenerateCaption();
+
+    default boolean getGenerateCaptionValue() {
+        return getGenerateCaption().getOrElse(true);
     }
 
-    Property<ThemePreset> getThemePreset();
+    /**
+     * Custom banner text. Default is project name(capitalized).
+     */
+    Property<String> getBannerText();
 
-    default ThemePreset getThemePresetValue() {
-        return getThemePreset().getOrElse(ThemePreset.DARK);
+    default String getBannerTextValue(String projectName) {
+        return getBannerText().getOrElse(projectName);
     }
 
-    Property<ThemeConfig> getBannerTheme();
+    /**
+     * Theme preset to use for the banner and caption styling. Default is SURPRISE_ME. Other options include DARK, LIGHT, SURPRISE_ME_LIGHT etc.
+     *
+     * @see THEME_PRESET
+     */
+    Property<THEME_PRESET> getThemePreset();
 
-    default ThemeConfig getBannerThemeValue() {
-        return getBannerTheme().getOrNull();
+    default THEME_PRESET getThemePresetValue() {
+        return getThemePreset().getOrElse(THEME_PRESET.SURPRISE_ME);
     }
 
-
-    Property<String> getCaption();
-
-    String DEFAULT_CAPTION = """
-                Spring Boot Version     : %s
-                JDK Version             : %s
-                Gradle Version          : %s
-                """;
-    String SPRING_BOOT_VERSION = "${spring-boot.version}";
-    default String getCaptionValue() {
-        return getCaption().getOrElse(DEFAULT_CAPTION.formatted(SPRING_BOOT_VERSION,
-                JavaVersion.current(), GradleVersion.current().getVersion()));
-
-    }
-
-    Property<ThemeConfig> getCaptionTheme();
-
-    default ThemeConfig getCaptionThemeValue() {
-        return getCaptionTheme().getOrNull();
-    }
-
-    Property<Boolean> getShowPreview();
-
-    default Boolean getShowPreviewValue() {
-        return getShowPreview().getOrElse(false);
-    }
-
-    Property<Boolean> getPrintBannerConfig();
-
-    default Boolean getPrintBannerConfigValue() {
-        return getPrintBannerConfig().getOrElse(false);
-    }
-
-
-
+    /**
+     * One or more fonts to use for the banner text. Default is a random font from the list of available fonts. You can specify multiple fonts and the plugin will randomly pick one for each build.
+     * <br/>
+     * By default, plugin uses a default set of fonts that are tested to work well with the banner text.
+     */
     ListProperty<String> getBannerFonts();
 
     default List<String> getBannerFontsValue() {
-        return getBannerFonts().get().isEmpty() ? DEFAULT_FONTS : getBannerFonts().get();
+        return getBannerFonts().get().isEmpty() ? Constants.DEFAULT_FONTS : getBannerFonts().get();
     }
 
-    List<String> DEFAULT_FONTS = List.of(
-            "3d",
-            "4max",
-            "ansiregular",
-            "ansishadow",
-            "banner3_d",
-            "banner4",
-            "bigmoneyne",
-            "block",
-            "bolger",
-            "calvins",
-            "colossal",
-            "cyberlarge",
-            "elite",
-            "georgia11",
-            "lean",
-            "epic",
-            "lineblocks",
-            "nancyj",
-            "poison",
-            "starwars",
-            "puffy",
-            "soft",
-            "standard",
-            "usaflag",
-            "usaflag",
-            "usaflag",
-            "whimsy");
+    /**
+     * Caption settings for the fine grain control over banner caption. It includes options like caption bullet style, whether to hide several versions etc.
+     *
+     * @see CaptionSetting
+     */
+    Property<CaptionSetting> getCaptionSetting();
+
+    default CaptionSetting getCaptionSettingValue() {
+        return getCaptionSetting().getOrElse(CaptionSetting.builder()
+                //.hideActiveProfiles(true)
+                .captionBulletStyle(DEFAULT_CAPTION_BULLET_STYLE)
+                .build());
+    }
+
 }

@@ -17,43 +17,39 @@
 package io.github.bhuyanp.gradle.tasks;
 
 
-import io.github.bhuyanp.gradle.SpringBannerExtension;
-import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.api.tasks.TaskContainer;
 
 import javax.inject.Inject;
-import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
-public class PrintDefaultBannersTask extends DefaultTask implements SpringBannerTask {
-    private static final String NAME = "printDefaultBanners";
+import static io.github.bhuyanp.gradle.common.Constants.DEFAULT_FONTS;
+import static io.github.bhuyanp.gradle.common.Constants.LINE_SEPARATOR;
 
-    private final SpringBannerExtension extension;
-    private final String projectName;
+public class PrintDefaultFontsTask extends SpringBannerTask {
+    private static final String NAME = "printDefaultFonts";
 
     @Inject
-    public PrintDefaultBannersTask(Project project) {
-        this.extension = project.getExtensions().getByType(SpringBannerExtension.class);
-        this.projectName = project.getName();
+    public PrintDefaultFontsTask(Project project) {
+        super(project);
     }
 
     public static void register(Project project) {
         TaskContainer tasks = project.getTasks();
-        tasks.register(NAME, PrintDefaultBannersTask.class, project).configure(
+        tasks.register(NAME, PrintDefaultFontsTask.class, project).configure(
                 task -> {
                     task.setGroup(GROUP);
-                    task.setDescription("Prints banners with only default fonts to the console.");
+                    task.setDescription("Prints banners with only default fonts.");
                 }
         );
     }
 
     @TaskAction
     public void print() {
-        new LinkedHashSet<>(SpringBannerExtension.DEFAULT_FONTS).forEach(font ->
-                System.out.println(getBannerWCaption(extension, font, projectName)
-                        + LINE_SEPARATOR
-                )
-        );
+        String finalOutput = DEFAULT_FONTS.stream().map(font ->
+                System.lineSeparator() +"Font: " + font + System.lineSeparator() + generate(font)
+        ).collect(Collectors.joining(LINE_SEPARATOR));
+        System.out.println(finalOutput);
     }
 }
