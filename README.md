@@ -19,7 +19,7 @@ plugins {
 
 #### Previews
 [![Surprise Me](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me-thumbnail.png)](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me.mp4)
-
+[surprise-me.mp4](media/surprise-me.mp4)
 
 ## Tasks
 
