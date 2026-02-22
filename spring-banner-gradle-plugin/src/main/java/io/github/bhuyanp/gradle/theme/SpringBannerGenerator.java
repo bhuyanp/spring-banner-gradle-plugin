@@ -67,7 +67,7 @@ public class SpringBannerGenerator {
             bannerFonts = Constants.DEFAULT_FONTS;
         }
         if(bannerFonts.size()==1){
-            return bannerFonts.getFirst();
+            return bannerFonts.get(0);
         }
         return bannerFonts.get(new java.util.Random().nextInt(bannerFonts.size()));
     }

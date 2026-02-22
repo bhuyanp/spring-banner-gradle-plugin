@@ -18,15 +18,43 @@ plugins {
 ```
 
 #### Previews
-[![Surprise Me](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me-thumbnail.png)](https://github.com/bhuyanp/spring-banner-gradle-plugin/blob/main/media/surprise-me.mp4)
 
+Run this command to preview the banner in different fonts.
+```bash
+./gradlew printDefaultFonts
+```
 
-[surprise-me.mp4](media/surprise-me.mp4)
+<details>
+<summary>Dark Theme:</summary>
+<img src="media/dark1.png" alt="Dark Theme Banner 1" title="Dark Theme Banner 1" />
+<img src="media/dark2.png" alt="Dark Theme Banner 2" title="Dark Theme Banner 2" />
+<img src="media/dark3.png" alt="Dark Theme Banner 3" title="Dark Theme Banner 3" />
+<img src="media/dark4.png" alt="Dark Theme Banner 4" title="Dark Theme Banner 4" />
+</details>
+<details>
+<summary>Light Theme:</summary>
+<img src="media/light1.png" alt="Light Theme Banner 1" title="Light Theme Banner 1" />
+<img src="media/light2.png" alt="Light Theme Banner 2" title="Light Theme Banner 2" />
+<img src="media/light3.png" alt="Light Theme Banner 3" title="Light Theme Banner 3" />
+<img src="media/light4.png" alt="Light Theme Banner 4" title="Light Theme Banner 4" />
+</details>
 
-<video width="600" controls>
-  <source src="media/surprise-me.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<details>
+<summary>Surprise Me Theme:</summary>
+<img src="media/surprise-me1.png" alt="Surprise Me Theme Banner 1" title="Surprise Me Theme Banner 1" />
+<img src="media/surprise-me2.png" alt="Surprise Me Theme Banner 2" title="Surprise Me Theme Banner 2" />
+<img src="media/surprise-me3.png" alt="Surprise Me Theme Banner 3" title="Surprise Me Theme Banner 3" />
+<img src="media/surprise-me4.png" alt="Surprise Me Theme Banner 4" title="Surprise Me Theme Banner 4" />
+</details>
+
+<details>
+<summary>Surprise Me Light Theme:</summary>
+<img src="media/surprise-me-light1.png" alt="Surprise Me Light Theme Banner 1" title="Surprise Me Light Theme Banner 1" />
+<img src="media/surprise-me-light2.png" alt="Surprise Me Light Theme Banner 2" title="Surprise Me Light Theme Banner 2" />
+<img src="media/surprise-me-light3.png" alt="Surprise Me Light Theme Banner 3" title="Surprise Me Light Theme Banner 3" />
+<img src="media/surprise-me-light4.png" alt="Surprise Me Light Theme Banner 4" title="Surprise Me Light Theme Banner 4" />
+</details>
+
 
 ## Tasks
 
